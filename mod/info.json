@@ -1,0 +1,8 @@
+{
+ "name": "test-mod-thing",
+ "version": "0.0.1",
+ "title": "My best test mod",
+ "author": "A very great tester",
+ "factorio_version": "1.0",
+ "dependencies": ["base"]
+}
