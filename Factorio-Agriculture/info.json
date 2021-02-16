@@ -1,8 +1,9 @@
 {
- "name": "factorio-agriculture",
+ "name": "Factorio-Agriculture",
  "version": "0.1.0",
- "title": "Factorio-Agriculture",
+ "title": "Factorio Agriculture",
  "author": "Jan5366x, Kormarun",
- "factorio_version": "1.0",
- "dependencies": ["base"]
+ "factorio_version": "1.1",
+ "dependencies": ["base >= 1.1"],
+ "description": ""
 }
