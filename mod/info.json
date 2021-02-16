@@ -1,8 +1,8 @@
 {
- "name": "test-mod-thing",
- "version": "0.0.1",
- "title": "My best test mod",
- "author": "A very great tester",
+ "name": "factorio-agriculture",
+ "version": "0.1.0",
+ "title": "Factorio-Agriculture",
+ "author": "Jan5366x, Kormarun",
  "factorio_version": "1.0",
  "dependencies": ["base"]
 }
