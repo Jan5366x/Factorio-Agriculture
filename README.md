@@ -58,18 +58,28 @@ Anything is subject to change!
 - Flour
   - Mill: Cereals
 - Pizza - Salami
+  - Kitchen: Flour
 - Pizza - Hawaii
+  - Kitchen: Flour
 - Pizza - Margarita
+  - Kitchen: Flour  
 - Pizza - Tonno
+  - Kitchen: Flour
 - Cake - Cherry pie
-- Cake - Apple pie Biofuel processing
+  - Kitchen: Flour
+- Cake - Apple pie
+  - Kitchen: Flour, Cherries
 - Sausage
+  - Kitchen: ?
 - Baked potatoes
-  - Oven: Potatoes
+  - Kitchen: Potatoes
 - Goulash
+  - Kitchen:
 - Salad
+  - Kitchen: Lettuce head, Tomatoes
 - Chicken Korma
 - Bread
+  - Kitchen: Flour
 - Biofuel
 
 
