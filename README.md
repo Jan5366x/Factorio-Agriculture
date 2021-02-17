@@ -9,71 +9,79 @@ Anything is subject to change!
 - Animal farm
 - Plant farm
 - Tree farm
-- Schlachter
-- Mühle
-- Ballenpresse (Optional ggf. Assembler)
+- Butcher
+- Mill
+- Baler 
+- Kitchen
 
 ## Items
-- Stroh
-- Getreide
-- Heu
-- Mais
-- Kartoffeln
-- Ananas
-- Tomaten
-- Zwiebeln
+- Straw
+- Cereals
+- Hay
+- Lettuce head
+- Corn
+- Potatoes
+- Pineapple
+- Tomatoes
+- Onions
 - Paprika
-- Karotte
-- Kräuter
-- Apfel
-- Birnen
-- Kirschen
-- Schwein
-- Kuh
-- Huhn
-- Mehl
+- Carrot
+- Spice mixture
+- Apple
+- Pears
+- Cherries
+- Pig
+- Cow
+- Chicken
+- Flour
+- Sausage
 - Pizza - Salami
 - Pizza - Hawaii
 - Pizza - Margarita
 - Pizza - Tonno
-- Kuchen - Kirschtorte
-- Kuchen - Apfelkuchen
-- Backkartoffeln
-- Gulasch
-- Salat
+- Cake - Cherry pie
+- Cake - Apple pie
+- Baked potatoes
+- Goulash
+- Bread
+- Salad
 - Chicken Korma
-- Brot
 
 ## Fluid
 - Biofuel
 
 ## Recipe
-- Heuballen
-- Strohballen
-- Mehl
+- Hay bale
+  - Baler: Hey
+- Straw bale
+  - Baler: Straw
+- Flour
+  - Mill: Cereals
 - Pizza - Salami
 - Pizza - Hawaii
 - Pizza - Margarita
 - Pizza - Tonno
-- Kuchen - Kirschtorte
-- Kuchen - Apfelkuchen
-- Backkartoffeln
-- Gulasch
-- Salat
+- Cake - Cherry pie
+- Cake - Apple pie Biofuel processing
+- Sausage
+- Baked potatoes
+  - Oven: Potatoes
+- Goulash
+- Salad
 - Chicken Korma
-- Brot
+- Bread
 - Biofuel
-- Biofuel processing
+
 
 # Technology
-- Normale Farm Tier 1
-- Normale Farm Tier 2
-- Tierfarm Tier 1
-- Tierfarm Tier 2
+- Small animal farm
+- Large animal farm
+- Small plant farm
+- Large plant farm
 - Biofuels
 - Biofuel Processing
-- Basic Lebensmittelverarbeitung
-- Standard Lebensmittelverarbeitung
-- Advanced Lebensmittelverarbeitung
-- Space Delivery - Einfach
-- Space Delivery - Atmosphäre 
+- Basic food processing
+- Standard food processing
+- Advanced food processing
+- Space Delivery - simple
+- Space Delivery - atmosphere 
