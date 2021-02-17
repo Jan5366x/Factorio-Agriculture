@@ -15,6 +15,13 @@ Anything is subject to change!
 - Kitchen
 
 ## Items
+- Animal farm Item
+- Plant farm Item
+- Tree farm Item
+- Butcher Item
+- Mill Item
+- Baler Item
+- Kitchen Item
 - Straw
 - Cereals
 - Hay
@@ -31,8 +38,11 @@ Anything is subject to change!
 - Pears
 - Cherries
 - Pig
+- Pig meat
 - Cow
+- Cow meat / beef
 - Chicken
+- Chicken meat
 - Flour
 - Sausage
 - Pizza - Salami
@@ -49,6 +59,12 @@ Anything is subject to change!
 
 ## Fluid
 - Biofuel
+
+## Item groups
+- TBD
+
+## Recipe Category
+- TBD
 
 ## Recipe
 - Hay bale
@@ -78,10 +94,12 @@ Anything is subject to change!
 - Salad
   - Kitchen: Lettuce head, Tomatoes
 - Chicken Korma
+  - Kitchen: chicken meat
 - Bread
   - Kitchen: Flour
 - Biofuel
-
+  - Chemical Plant:
+- Biofuel refinement
 
 # Technology
 - Small animal farm
@@ -94,4 +112,4 @@ Anything is subject to change!
 - Standard food processing
 - Advanced food processing
 - Space Delivery - simple
-- Space Delivery - atmosphere 
+- Space Delivery - atmosphere
