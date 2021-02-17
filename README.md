@@ -68,6 +68,10 @@ Anything is subject to change!
 - TBD
 
 ## Recipe
+- Beef
+  - Butcher: Cow
+- Chicken meat
+  - Butcher: Chicken
 - Hay bale
   - Baler: Hey
 - Straw bale
