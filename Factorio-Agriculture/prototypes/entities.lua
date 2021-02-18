@@ -1,3 +1,8 @@
+require ("util")
+
+local hit_effects = require("__base__/prototypes/entity/hit-effects")
+local sounds      = require("__base__/prototypes/entity/sounds")
+
 data:extend(
 {
     {
@@ -6,7 +11,7 @@ data:extend(
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "assembling-machine-1"},
+        minable = {mining_time = 0.2, result = "small-animal-farm"},
         max_health = 300,
         corpse = "assembling-machine-1-remnants",
         dying_explosion = "assembling-machine-1-explosion",
@@ -22,7 +27,6 @@ data:extend(
         damaged_trigger_effect = hit_effects.entity(),
         fast_replaceable_group = "assembling-machine",
         next_upgrade = "assembling-machine-2",
-        alert_icon_shift = util.by_pixel(-3, -12),
         animation =
         {
             layers =
@@ -105,7 +109,7 @@ data:extend(
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "assembling-machine-1"},
+        minable = {mining_time = 0.2, result = "large-animal-farm"},
         max_health = 300,
         corpse = "assembling-machine-1-remnants",
         dying_explosion = "assembling-machine-1-explosion",
@@ -204,7 +208,7 @@ data:extend(
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "assembling-machine-1"},
+        minable = {mining_time = 0.2, result = "plant-farm"},
         max_health = 300,
         corpse = "assembling-machine-1-remnants",
         dying_explosion = "assembling-machine-1-explosion",
@@ -303,7 +307,7 @@ data:extend(
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "assembling-machine-1"},
+        minable = {mining_time = 0.2, result = "tree-farm"},
         max_health = 300,
         corpse = "assembling-machine-1-remnants",
         dying_explosion = "assembling-machine-1-explosion",
@@ -402,7 +406,7 @@ data:extend(
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "assembling-machine-1"},
+        minable = {mining_time = 0.2, result = "butcher"},
         max_health = 300,
         corpse = "assembling-machine-1-remnants",
         dying_explosion = "assembling-machine-1-explosion",
@@ -501,7 +505,7 @@ data:extend(
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "assembling-machine-1"},
+        minable = {mining_time = 0.2, result = "mill"},
         max_health = 300,
         corpse = "assembling-machine-1-remnants",
         dying_explosion = "assembling-machine-1-explosion",
@@ -600,7 +604,7 @@ data:extend(
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "assembling-machine-1"},
+        minable = {mining_time = 0.2, result = "baler"},
         max_health = 300,
         corpse = "assembling-machine-1-remnants",
         dying_explosion = "assembling-machine-1-explosion",
@@ -699,7 +703,7 @@ data:extend(
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
-        minable = {mining_time = 0.2, result = "assembling-machine-1"},
+        minable = {mining_time = 0.2, result = "kitchen"},
         max_health = 300,
         corpse = "assembling-machine-1-remnants",
         dying_explosion = "assembling-machine-1-explosion",
