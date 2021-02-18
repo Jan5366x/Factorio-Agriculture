@@ -1,3 +1,4 @@
+--[[
 data:extend(
         {
             {
@@ -5,3 +6,4 @@ data:extend(
             }
         }
 )
+]]--
