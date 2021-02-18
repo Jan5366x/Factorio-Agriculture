@@ -6,7 +6,8 @@ Mod is in early work in progress phase!
 Anything is subject to change!
 
 ## Buildings
-- Animal farm
+- Small animal farm
+- Large animal farm
 - Plant farm
 - Tree farm
 - Butcher
@@ -15,9 +16,10 @@ Anything is subject to change!
 - Kitchen
 
 ## Items
-- Animal farm Item
-- Plant farm Item
-- Tree farm Item
+- Small animal farm item
+- Large animal farm item
+- Plant farm item
+- Tree farm item
 - Butcher Item
 - Mill Item
 - Baler Item
@@ -32,9 +34,9 @@ Anything is subject to change!
 - Tomatoes
 - Onions
 - Paprika
-- Carrot
+- Carrots
 - Spice mixture
-- Apple
+- Apples
 - Pears
 - Cherries
 - Cow
@@ -42,7 +44,7 @@ Anything is subject to change!
 - Milk Can
 - Chicken
 - Chicken meat
-- Egg
+- Eggs
 - Flour
 - Sausage
 - Dough
@@ -89,9 +91,9 @@ Anything is subject to change!
 - Pizza - Tonno
   - Kitchen: Dough, Tomatoes, Fish
 - Cake - Cherry pie
-  - Kitchen: Flour, Cherries, Milk Can, Egg
+  - Kitchen: Flour, Cherries, Milk Can, Eggs
 - Cake - Apple pie
-  - Kitchen: Flour, Milk Can, Egg
+  - Kitchen: Flour, Milk Can, Egg, Apples
 - Sausage
   - Kitchen: Beef
 - Baked potatoes
