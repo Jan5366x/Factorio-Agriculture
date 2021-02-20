@@ -2,6 +2,54 @@ data:extend(
 {
     {
         type = "recipe",
+        name = "biofuel",
+        category = "chemistry",
+        enabled = true,
+        energy_required = 2,
+        ingredients =
+        {
+            {type="fluid", name="water", amount=30},
+            {type="item", name="corn", amount=10}
+        },
+        results=
+        {
+            {type="fluid", name="biofuel", amount=10}
+        },
+        main_product= "",
+        icon = "__base__/graphics/icons/fluid/heavy-oil-cracking.png",
+        icon_size = 64, icon_mipmaps = 4,
+        subgroup = "fluid-recipes",
+        order = "b[fluid-chemistry]-a[heavy-oil-cracking]",
+        crafting_machine_tint =
+        {
+            primary = {r = 1.000, g = 0.642, b = 0.261, a = 1.000}, -- #ffa342ff
+            secondary = {r = 1.000, g = 0.722, b = 0.376, a = 1.000}, -- #ffb85fff
+            tertiary = {r = 0.854, g = 0.659, b = 0.576, a = 1.000}, -- #d9a892ff
+            quaternary = {r = 1.000, g = 0.494, b = 0.271, a = 1.000}, -- #ff7e45ff
+        }
+    },
+    {
+        type = "recipe",
+        name = "biofuel-refinement",
+        category = "oil-processing",
+        enabled = true,
+        energy_required = 5,
+        ingredients =
+        {
+            {type="fluid", name="water", amount=50},
+            {type="fluid", name="biofuel", amount=100}
+        },
+        results=
+        {
+            {type="fluid", name="light-oil", amount=45},
+        },
+        icon = "__base__/graphics/icons/fluid/advanced-oil-processing.png",
+        icon_size = 64, icon_mipmaps = 4,
+        subgroup = "fluid-recipes",
+        order = "a[oil-processing]-b[biofuel-refinement]"
+    },
+    {
+        type = "recipe",
         name = "beef",
         enabled = true,
         ingredients =
@@ -216,53 +264,5 @@ data:extend(
         },
         energy_required = 15,
         result = "sausage"
-    },
-    {
-        type = "recipe",
-        name = "biofuel",
-        category = "chemistry",
-        enabled = true,
-        energy_required = 2,
-        ingredients =
-        {
-            {type="fluid", name="water", amount=30},
-            {type="item", name="corn", amount=10}
-        },
-        results=
-        {
-            {type="fluid", name="biofuel", amount=10}
-        },
-        main_product= "",
-        icon = "__base__/graphics/icons/fluid/heavy-oil-cracking.png",
-        icon_size = 64, icon_mipmaps = 4,
-        subgroup = "fluid-recipes",
-        order = "b[fluid-chemistry]-a[heavy-oil-cracking]",
-        crafting_machine_tint =
-        {
-            primary = {r = 1.000, g = 0.642, b = 0.261, a = 1.000}, -- #ffa342ff
-            secondary = {r = 1.000, g = 0.722, b = 0.376, a = 1.000}, -- #ffb85fff
-            tertiary = {r = 0.854, g = 0.659, b = 0.576, a = 1.000}, -- #d9a892ff
-            quaternary = {r = 1.000, g = 0.494, b = 0.271, a = 1.000}, -- #ff7e45ff
-        }
-    },
-    {
-        type = "recipe",
-        name = "biofuel-refinement",
-        category = "oil-processing",
-        enabled = true,
-        energy_required = 5,
-        ingredients =
-        {
-            {type="fluid", name="water", amount=50},
-            {type="fluid", name="biofuel", amount=100}
-        },
-        results=
-        {
-            {type="fluid", name="light-oil", amount=45},
-        },
-        icon = "__base__/graphics/icons/fluid/advanced-oil-processing.png",
-        icon_size = 64, icon_mipmaps = 4,
-        subgroup = "fluid-recipes",
-        order = "a[oil-processing]-b[biofuel-refinement]"
     }
 })
