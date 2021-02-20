@@ -15,6 +15,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
+    private final static String BUILD_SCRIPT_VERSION = "1.0.0";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "build";
@@ -23,7 +24,7 @@ public class Build {
 
     public static void main(String[] args) throws Exception {
         System.out.println(CONSOLE_SEP);
-        System.out.println(PROJECT_DIR + " Build");
+        System.out.println(ASCII_LOGO);
         System.out.println(CONSOLE_SEP);
         prepareModBuildFolder();
         System.out.println(CONSOLE_SEP);
@@ -36,13 +37,11 @@ public class Build {
 
     private static void prepareModBuildFolder() throws Exception {
         System.out.println("Prepare mod build folder ...");
-        System.out.println(CONSOLE_SEP);
-
         var directory = new File(BUILD_DIR);
 
-        System.out.println("Build dir: " + directory.getAbsolutePath());
+        System.out.println("build dir: " + directory.getAbsolutePath());
         var expectedDirStructure = PROJECT_DIR + File.separator + BUILD_DIR;
-        System.out.println("Expected build dir structure: " + expectedDirStructure);
+        System.out.println("expected build dir structure: " + expectedDirStructure);
 
         // sanity check
         if (!directory.getAbsolutePath().contains(expectedDirStructure))
@@ -60,8 +59,6 @@ public class Build {
 
     private static void copyModFiles() throws Exception  {
         System.out.println("Copy mod files...");
-        System.out.println(CONSOLE_SEP);
-
         var sourceDir = new File(MOD_SUB_DIR);
         var destination = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
         copyDirectory(sourceDir.getAbsolutePath(), destination.getAbsolutePath());
@@ -69,7 +66,6 @@ public class Build {
 
     private static void renameAndZipMod() throws Exception  {
         System.out.println("Rename mod folder and create zip file...");
-        System.out.println(CONSOLE_SEP);
 
         var version = fetchModVersionString();
         System.out.println("Mod version: " + version);
@@ -164,4 +160,20 @@ public class Build {
                 zipOut.write(bytes, 0, length);
         }
     }
+
+    private final static String ASCII_LOGO = "     ______            _                _                            " +
+            "    _               _  _                     \n" +
+            "    |  ____|          | |              (_)            /\\                (_)             | || |       " +
+            "             \n" +
+            "    | |__  __ _   ___ | |_  ___   _ __  _   ___      /  \\    __ _  _ __  _   ___  _   _ | || |_  _   " +
+            "_  _ __  ___ \n" +
+            "    |  __|/ _` | / __|| __|/ _ \\ | '__|| | / _ \\    / /\\ \\  / _` || '__|| | / __|| | | || || __|| " +
+            "| | || '__|/ _ \\\n" +
+            "    | |  | (_| || (__ | |_| (_) || |   | || (_) |  / ____ \\| (_| || |   | || (__ | |_| || || |_ | |_|" +
+            " || |  |  __/\n" +
+            "    |_|   \\__,_| \\___| \\__|\\___/ |_|   |_| \\___/  /_/    \\_\\\\__, ||_|   |_| \\___| \\__,_||_|" +
+            " \\__| \\__,_||_|   \\___|\n" +
+            "                                                             __/ |                        " +
+            "  Mod Build Script "+ BUILD_SCRIPT_VERSION + "\n" +
+            "                                                            |___/";
 }
