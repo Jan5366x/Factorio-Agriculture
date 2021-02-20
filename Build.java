@@ -19,40 +19,64 @@ public class Build {
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "build";
 
-    private final static String ERROR_BUILD_DIR = "Build dir don't met the expected folder structure!";
+    private final static String CONSOLE_SEP = "-".repeat(120);
 
     public static void main(String[] args) throws Exception {
+        System.out.println(CONSOLE_SEP);
+        System.out.println(PROJECT_DIR + " Build");
+        System.out.println(CONSOLE_SEP);
         prepareModBuildFolder();
+        System.out.println(CONSOLE_SEP);
         copyModFiles();
+        System.out.println(CONSOLE_SEP);
         renameAndZipMod();
+        System.out.println(CONSOLE_SEP);
+        System.out.println("Build successfully!");
     }
 
     private static void prepareModBuildFolder() throws Exception {
-        var directory = new File(BUILD_DIR);
-        if (!directory.exists())
-            directory.mkdir();
+        System.out.println("Prepare mod build folder ...");
+        System.out.println(CONSOLE_SEP);
 
-        System.out.println("build dir: " + directory.getAbsolutePath());
+        var directory = new File(BUILD_DIR);
+
+        System.out.println("Build dir: " + directory.getAbsolutePath());
         var expectedDirStructure = PROJECT_DIR + File.separator + BUILD_DIR;
-        System.out.println("expected structure: " + expectedDirStructure);
+        System.out.println("Expected build dir structure: " + expectedDirStructure);
 
         // sanity check
         if (!directory.getAbsolutePath().contains(expectedDirStructure))
-            throw new IOException(ERROR_BUILD_DIR);
+            throw new IOException("Build dir don't met the expected folder structure!");
 
-        purgeDirectory(directory);
+
+        if (directory.exists()) {
+            System.out.println("Build dir detected!\n\t-> Content will be purged!");
+            purgeDirectory(directory);
+        } else {
+            System.out.println("Build dir don't exists!\n\t-> Empty build dir will be created!");
+            directory.mkdir();
+        }
     }
 
     private static void copyModFiles() throws Exception  {
+        System.out.println("Copy mod files...");
+        System.out.println(CONSOLE_SEP);
+
         var sourceDir = new File(MOD_SUB_DIR);
         var destination = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
         copyDirectory(sourceDir.getAbsolutePath(), destination.getAbsolutePath());
     }
 
     private static void renameAndZipMod() throws Exception  {
+        System.out.println("Rename mod folder and create zip file...");
+        System.out.println(CONSOLE_SEP);
+
         var version = fetchModVersionString();
+        System.out.println("Mod version: " + version);
 
         var name = MOD_SUB_DIR.toLowerCase(Locale.ENGLISH) + "_" + version;
+        System.out.println("Mod name: " + name);
+
         var zipName = new File(BUILD_DIR + File.separator + name + ".zip").getAbsolutePath();
         var rawModFolder = new File( BUILD_DIR + File.separator + MOD_SUB_DIR);
         var preparedModFolder = renameDirectory(rawModFolder.getAbsolutePath(), name);
@@ -89,7 +113,7 @@ public class Build {
     public static void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation)
             throws IOException {
 
-        System.out.println("Copy Directory\n\tFrom:" + sourceDirectoryLocation + "\n\t" + destinationDirectoryLocation);
+        System.out.println("Copy Directory\n\tFrom: " + sourceDirectoryLocation + "\n\tTo: " + destinationDirectoryLocation);
 
         Files.walk(Paths.get(sourceDirectoryLocation))
                 .forEach(source -> {
