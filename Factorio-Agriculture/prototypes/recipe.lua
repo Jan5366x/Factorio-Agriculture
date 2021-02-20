@@ -50,6 +50,104 @@ data:extend(
     },
     {
         type = "recipe",
+        name = "small-animal-farm",
+        enabled = true,
+        ingredients =
+        {
+            {"iron-plate", 3},
+            {"copper-plate", 3}
+        },
+        energy_required = 15,
+        result = "small-animal-farm"
+    },
+    {
+        type = "recipe",
+        name = "large-animal-farm",
+        enabled = true,
+        ingredients =
+        {
+            {"iron-plate", 6},
+            {"copper-plate", 6}
+        },
+        energy_required = 15,
+        result = "large-animal-farm"
+    },
+    {
+        type = "recipe",
+        name = "plant-farm",
+        enabled = true,
+        ingredients =
+        {
+            {"iron-plate", 3},
+            {"copper-plate", 3}
+        },
+        energy_required = 15,
+        result = "plant-farm"
+    },
+    {
+        type = "recipe",
+        name = "tree-farm",
+        enabled = true,
+        ingredients =
+        {
+            {"iron-plate", 3},
+            {"copper-plate", 3}
+        },
+        energy_required = 15,
+        result = "tree-farm"
+    },
+    {
+        type = "recipe",
+        name = "butcher",
+        enabled = true,
+        ingredients =
+        {
+            {"iron-plate", 3},
+            {"copper-plate", 3}
+        },
+        energy_required = 15,
+        result = "butcher"
+    },
+    {
+        type = "recipe",
+        name = "mill",
+        enabled = true,
+        ingredients =
+        {
+            {"wood", 8},
+            {"stone-brick", 3}
+        },
+        energy_required = 15,
+        result = "mill"
+    },
+    {
+        type = "recipe",
+        name = "baler",
+        enabled = true,
+        ingredients =
+        {
+            {"iron-plate", 3},
+            {"copper-plate", 1},
+            {"electronic-circuit", 2}
+        },
+        energy_required = 15,
+        result = "baler"
+    },
+    {
+        type = "recipe",
+        name = "kitchen",
+        enabled = true,
+        ingredients =
+        {
+            {"iron-plate", 3},
+            {"copper-plate", 1},
+            {"stone-brick", 2}
+        },
+        energy_required = 15,
+        result = "kitchen"
+    },
+    {
+        type = "recipe",
         name = "beef",
         enabled = true,
         ingredients =
