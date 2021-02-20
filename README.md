@@ -16,14 +16,14 @@ Anything is subject to change!
 - Kitchen
 
 ## Items
-- Small animal farm item
-- Large animal farm item
-- Plant farm item
-- Tree farm item
-- Butcher Item
-- Mill Item
-- Baler Item
-- Kitchen Item
+- Small animal farm
+- Large animal farm
+- Plant farm
+- Tree farm
+- Butcher
+- Mill
+- Baler
+- Kitchen
 - Straw
 - Cereals
 - Hay
@@ -72,6 +72,22 @@ Anything is subject to change!
 - TBD
 
 ## Recipe
+- Small animal farm
+  - Assembling machine: iron-plate, copper-plate
+- Large animal farm
+  - Assembling machine: iron-plate, wood
+- Plant farm
+  - Assembling machine: iron-plate, copper-plate
+- Tree farm
+  - Assembling machine: iron-plate, copper-plate
+- Butcher
+  - Assembling machine: iron-plate, copper-plate
+- Mill
+  - Assembling machine: wood, stone-brick
+- Baler
+  - Assembling machine: iron-plate, copper-plate, electronic-circuit
+- Kitchen
+  - Assembling machine: iron-plate, copper-plate, stone-brick
 - Beef
   - Butcher: Cow
 - Chicken meat
