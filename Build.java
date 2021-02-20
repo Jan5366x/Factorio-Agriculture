@@ -15,28 +15,33 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.0.0";
+    private final static String BUILD_SCRIPT_VERSION = "1.0.1";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "build";
 
-    private final static String CONSOLE_SEP = "-".repeat(80);
+    private final static String CONSOLE_SEP = "-".repeat(79);
 
     public static void main(String[] args) throws Exception {
         System.out.println(CONSOLE_SEP);
         System.out.println(ASCII_LOGO);
-        System.out.println(CONSOLE_SEP);
+
         prepareModBuildFolder();
-        System.out.println(CONSOLE_SEP);
         copyModFiles();
-        System.out.println(CONSOLE_SEP);
+        cleanupModFolder();
         renameAndZipMod();
+
+        System.out.println(CONSOLE_SEP);
+        System.out.println(ASCII_LOGO);
         System.out.println(CONSOLE_SEP);
         System.out.println("Build successfully!");
     }
 
     private static void prepareModBuildFolder() throws Exception {
-        System.out.println("Prepare mod build folder ...");
+        System.out.println(CONSOLE_SEP);
+        System.out.println("Prepare mod build folder...");
+        System.out.println(CONSOLE_SEP);
+
         var directory = new File(BUILD_DIR);
 
         System.out.println("build dir: " + directory.getAbsolutePath());
@@ -58,14 +63,26 @@ public class Build {
     }
 
     private static void copyModFiles() throws Exception  {
+        System.out.println(CONSOLE_SEP);
         System.out.println("Copy mod files...");
+        System.out.println(CONSOLE_SEP);
+
         var sourceDir = new File(MOD_SUB_DIR);
         var destination = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
         copyDirectory(sourceDir.getAbsolutePath(), destination.getAbsolutePath());
     }
 
+    private static void cleanupModFolder() {
+        System.out.println(CONSOLE_SEP);
+        System.out.println("Cleanup...");
+        System.out.println(CONSOLE_SEP);
+        System.out.println("Skipped! No cleanup implemented!");
+    }
+
     private static void renameAndZipMod() throws Exception  {
+        System.out.println(CONSOLE_SEP);
         System.out.println("Rename mod folder and create zip file...");
+        System.out.println(CONSOLE_SEP);
 
         var version = fetchModVersionString();
         System.out.println("Mod version: " + version);
@@ -109,13 +126,14 @@ public class Build {
     public static void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation)
             throws IOException {
 
-        System.out.println("Copy Directory\n\tFrom: " + sourceDirectoryLocation + "\n\tTo: " + destinationDirectoryLocation);
+        System.out.println("Copy Directory\nFrom: " + sourceDirectoryLocation + "\nTo: " + destinationDirectoryLocation);
 
         Files.walk(Paths.get(sourceDirectoryLocation))
                 .forEach(source -> {
                     var destination = Paths.get(destinationDirectoryLocation, source.toString()
                             .substring(sourceDirectoryLocation.length()));
                     try {
+                        System.out.println("-> " + source.getFileName());
                         Files.copy(source, destination);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -163,16 +181,16 @@ public class Build {
 
     private final static String ASCII_LOGO =
             "     ______            _                _\n" +
-            "    |  ____|          | |              (_)                              \n" +
-            "    | |__  __ _   ___ | |_  ___   _ __  _   ___                         \n" +
-            "    |  __|/ _` | / __|| __|/ _ \\ | '__|| | / _ \\                        \n" +
-            "    | |  | (_| || (__ | |_| (_) || |   | || (_) |                       \n" +
-            "    |_|   \\__,_| \\___| \\__|\\___/ |_|   |_| \\___/  _                     \n" +
-            "                /\\                (_)             | || |                    \n" +
-            "               /  \\    __ _  _ __  _   ___  _   _ | || |_  _   _  _ __  ___ \n" +
-            "              / /\\ \\  / _` || '__|| | / __|| | | || || __|| | | || '__|/ _ \\\n" +
-            "             / ____ \\| (_| || |   | || (__ | |_| || || |_ | |_| || |  |  __/\n" +
-            "            /_/    \\_\\\\__, ||_|   |_| \\___| \\__,_||_| \\__| \\__,_||_|   \\___|\n" +
-            "                       __/ |                     Build Script Version v" + BUILD_SCRIPT_VERSION + "\n" +
-            "                      |___/";
+                    "    |  ____|          | |              (_)                              \n" +
+                    "    | |__  __ _   ___ | |_  ___   _ __  _   ___                         \n" +
+                    "    |  __|/ _` | / __|| __|/ _ \\ | '__|| | / _ \\                        \n" +
+                    "    | |  | (_| || (__ | |_| (_) || |   | || (_) |                       \n" +
+                    "    |_|   \\__,_| \\___| \\__|\\___/ |_|   |_| \\___/  _                     \n" +
+                    "                /\\                (_)             | || |                    \n" +
+                    "               /  \\    __ _  _ __  _   ___  _   _ | || |_  _   _  _ __  ___ \n" +
+                    "              / /\\ \\  / _` || '__|| | / __|| | | || || __|| | | || '__|/ _ \\\n" +
+                    "             / ____ \\| (_| || |   | || (__ | |_| || || |_ | |_| || |  |  __/\n" +
+                    "            /_/    \\_\\\\__, ||_|   |_| \\___| \\__,_||_| \\__| \\__,_||_|   \\___|\n" +
+                    "                       __/ |                     Build Script Version v" + BUILD_SCRIPT_VERSION + "\n" +
+                    "                      |___/";
 }
