@@ -317,7 +317,7 @@ data:extend(
     {
         type = "item",
         name = "pizza-salami",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/pizza-salami.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pizza-salami]",
