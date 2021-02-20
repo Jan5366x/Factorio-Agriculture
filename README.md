@@ -27,6 +27,8 @@ Anything is subject to change!
 - Straw
 - Cereals
 - Hay
+- Hay bale
+- Straw bale
 - Lettuce head
 - Corn
 - Potatoes
@@ -89,7 +91,7 @@ Anything is subject to change!
 - Pizza - Margarita
   - Kitchen: Dough, Tomatoes
 - Pizza - Tonno
-  - Kitchen: Dough, Tomatoes, Fish
+  - Kitchen: Dough, Tomatoes, raw fish
 - Cake - Cherry pie
   - Kitchen: Flour, Cherries, Milk Can, Eggs
 - Cake - Apple pie

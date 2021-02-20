@@ -109,6 +109,24 @@ data:extend(
     },
     {
         type = "item",
+        name = "hay-bale",
+        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        subgroup = "raw-resource",
+        order = "a[hay-bale]",
+        stack_size = 10
+    },
+    {
+        type = "item",
+        name = "straw-bale",
+        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        subgroup = "raw-resource",
+        order = "a[straw-bale]",
+        stack_size = 10
+    },
+    {
+        type = "item",
         name = "lettuce-head",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
