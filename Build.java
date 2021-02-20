@@ -1,8 +1,14 @@
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Build Factorio Agriculture Mod - Zip File
@@ -20,12 +26,12 @@ public class Build {
             """;
 
     public static void main(String[] args) throws Exception {
-        prepareBuildFolder();
-        copyFiles();
-        renameAndZip();
+        prepareModBuildFolder();
+        copyModFiles();
+        renameAndZipMod();
     }
 
-    private static void prepareBuildFolder() throws Exception {
+    private static void prepareModBuildFolder() throws Exception {
         var directory = new File(File.separator + BUILD_DIR);
         if (!directory.exists())
             directory.mkdir();
@@ -37,17 +43,46 @@ public class Build {
         purgeDirectory(directory);
     }
 
-    private static void copyFiles() throws Exception  {
-        // TODO implement
+    private static void copyModFiles() throws Exception  {
+        var sourceDir = new File(File.separator + MOD_SUB_DIR);
+        var destination = new File(File.separator + BUILD_DIR);
+
+        copyDirectory(sourceDir.toString(), destination.toString());
     }
 
-    private static void renameAndZip() throws Exception  {
+    private static void renameAndZipMod() throws Exception  {
         var version = fetchModVersionString();
-        // TODO implement
+
+        var name = MOD_SUB_DIR.toLowerCase(Locale.ENGLISH) + "_" + version;
+        var zipName = name + ".zip";
+        var rawModFolder = new File(File.separator + BUILD_DIR + File.separator + MOD_SUB_DIR);
+        var preparedModFolder = renameDirectory(rawModFolder.toString(), name);
+
+        try (var fos = new FileOutputStream(zipName); var zipOut = new ZipOutputStream(fos)) {
+            var fileToZip = preparedModFolder.toFile();
+            zipFile(fileToZip, fileToZip.getName(), zipOut);
+        }
     }
 
     private static String fetchModVersionString() throws Exception {
-        throw new Exception("Not implemented!");
+        var infoJson = new File(MOD_SUB_DIR + File.separator + "info.json");
+        var allLines = Files.readAllLines(infoJson.toPath());
+        for (var line : allLines) {
+            if (line.contains("\"version\":")) {
+                return line
+                        .trim()
+                        .toLowerCase(Locale.ENGLISH)
+                        .replace("\"version\":", "")
+                        .replace("\"", "")
+                        .replace(",", "")
+                        .trim();
+            }
+        }
+    }
+
+    public static Path renameDirectory(String dirPath, String newName) throws Exception {
+        var source = Paths.get(dirPath);
+        return Files.move(source, source.resolveSibling(newName));
     }
 
     public static void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation)
@@ -69,6 +104,36 @@ public class Build {
             if (file.isDirectory())
                 purgeDirectory(file);
             file.delete();
+        }
+    }
+
+    private static void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut) throws IOException {
+        if (fileToZip.isHidden()) {
+            return;
+        }
+        if (fileToZip.isDirectory()) {
+            if (fileName.endsWith("/")) {
+                zipOut.putNextEntry(new ZipEntry(fileName));
+                zipOut.closeEntry();
+            } else {
+                zipOut.putNextEntry(new ZipEntry(fileName + "/"));
+                zipOut.closeEntry();
+            }
+            var children = fileToZip.listFiles();
+
+            for (File childFile : Objects.requireNonNull(children))
+                zipFile(childFile, fileName + "/" + childFile.getName(), zipOut);
+
+            return;
+        }
+        try(var fis = new FileInputStream(fileToZip)) {
+            var zipEntry = new ZipEntry(fileName);
+            zipOut.putNextEntry(zipEntry);
+            var bytes = new byte[1024];
+
+            int length;
+            while ((length = fis.read(bytes)) >= 0)
+                zipOut.write(bytes, 0, length);
         }
     }
 }
