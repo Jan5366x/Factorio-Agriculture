@@ -183,8 +183,8 @@ data:extend(
         result = "goulash"
     },
     {
-        type = "salad",
-        name = "sausage",
+        type = "recipe",
+        name = "salad",
         enabled = true,
         ingredients =
         {
