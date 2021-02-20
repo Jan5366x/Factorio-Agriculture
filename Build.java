@@ -19,11 +19,7 @@ public class Build {
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "build";
 
-    private final static String ERROR_BUILD_DIR = """
-            Build directory problem!
-
-            Build dir don't met the expected folder structure!
-            """;
+    private final static String ERROR_BUILD_DIR = "Build dir don't met the expected folder structure!";
 
     public static void main(String[] args) throws Exception {
         prepareModBuildFolder();
@@ -32,31 +28,34 @@ public class Build {
     }
 
     private static void prepareModBuildFolder() throws Exception {
-        var directory = new File(File.separator + BUILD_DIR);
+        var directory = new File(BUILD_DIR);
         if (!directory.exists())
             directory.mkdir();
 
+        System.out.println("build dir: " + directory.getAbsolutePath());
+        var expectedDirStructure = PROJECT_DIR + File.separator + BUILD_DIR;
+        System.out.println("expected structure: " + expectedDirStructure);
+
         // sanity check
-        if (!directory.toString().contains(PROJECT_DIR + File.separator + MOD_SUB_DIR + File.separator + BUILD_DIR))
+        if (!directory.getAbsolutePath().contains(expectedDirStructure))
             throw new IOException(ERROR_BUILD_DIR);
 
         purgeDirectory(directory);
     }
 
     private static void copyModFiles() throws Exception  {
-        var sourceDir = new File(File.separator + MOD_SUB_DIR);
-        var destination = new File(File.separator + BUILD_DIR);
-
-        copyDirectory(sourceDir.toString(), destination.toString());
+        var sourceDir = new File(MOD_SUB_DIR);
+        var destination = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
+        copyDirectory(sourceDir.getAbsolutePath(), destination.getAbsolutePath());
     }
 
     private static void renameAndZipMod() throws Exception  {
         var version = fetchModVersionString();
 
         var name = MOD_SUB_DIR.toLowerCase(Locale.ENGLISH) + "_" + version;
-        var zipName = name + ".zip";
-        var rawModFolder = new File(File.separator + BUILD_DIR + File.separator + MOD_SUB_DIR);
-        var preparedModFolder = renameDirectory(rawModFolder.toString(), name);
+        var zipName = new File(BUILD_DIR + File.separator + name + ".zip").getAbsolutePath();
+        var rawModFolder = new File( BUILD_DIR + File.separator + MOD_SUB_DIR);
+        var preparedModFolder = renameDirectory(rawModFolder.getAbsolutePath(), name);
 
         try (var fos = new FileOutputStream(zipName); var zipOut = new ZipOutputStream(fos)) {
             var fileToZip = preparedModFolder.toFile();
@@ -78,6 +77,8 @@ public class Build {
                         .trim();
             }
         }
+
+        throw new Exception("Mod version not found!");
     }
 
     public static Path renameDirectory(String dirPath, String newName) throws Exception {
@@ -87,6 +88,9 @@ public class Build {
 
     public static void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation)
             throws IOException {
+
+        System.out.println("Copy Directory\n\tFrom:" + sourceDirectoryLocation + "\n\t" + destinationDirectoryLocation);
+
         Files.walk(Paths.get(sourceDirectoryLocation))
                 .forEach(source -> {
                     var destination = Paths.get(destinationDirectoryLocation, source.toString()
