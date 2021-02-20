@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.Objects;
+import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -15,12 +14,12 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.0.1";
+    private final static String BUILD_SCRIPT_VERSION = "1.0.2";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "build";
 
-    private final static String CONSOLE_SEP = "-".repeat(79);
+    private final static List<String> filesToCleanup = List.of(".keep", "thumbs.db", "desktop.ini");
 
     public static void main(String[] args) throws Exception {
         System.out.println(CONSOLE_SEP);
@@ -62,7 +61,7 @@ public class Build {
         }
     }
 
-    private static void copyModFiles() throws Exception  {
+    private static void copyModFiles() throws Exception {
         System.out.println(CONSOLE_SEP);
         System.out.println("Copy mod files...");
         System.out.println(CONSOLE_SEP);
@@ -72,11 +71,28 @@ public class Build {
         copyDirectory(sourceDir.getAbsolutePath(), destination.getAbsolutePath());
     }
 
-    private static void cleanupModFolder() {
+    private static void cleanupModFolder() throws Exception {
         System.out.println(CONSOLE_SEP);
         System.out.println("Cleanup...");
         System.out.println(CONSOLE_SEP);
-        System.out.println("Skipped! No cleanup implemented!");
+
+        filesToCleanup.forEach(s -> System.out.println("-> " + s));
+
+        var dir = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
+        try (var paths = Files.walk(dir.toPath())) {
+            paths
+                    .filter(Build::cleanupFilter)
+                    .forEach(Build::deleteFile);
+        }
+    }
+
+    private static boolean cleanupFilter(Path path) {
+        if (!Files.isRegularFile(path))
+            return false;
+
+        var fileName = path.getFileName().toString();
+
+        return filesToCleanup.stream().anyMatch(s -> s.equalsIgnoreCase(fileName));
     }
 
     private static void renameAndZipMod() throws Exception  {
@@ -116,6 +132,14 @@ public class Build {
         }
 
         throw new Exception("Mod version not found!");
+    }
+
+    public static void deleteFile(final Path path) {
+        try {
+            Files.delete(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Path renameDirectory(String dirPath, String newName) throws Exception {
@@ -179,6 +203,8 @@ public class Build {
         }
     }
 
+    private final static String CONSOLE_SEP = "-".repeat(79);
+
     private final static String ASCII_LOGO =
             "     ______            _                _\n" +
                     "    |  ____|          | |              (_)                              \n" +
@@ -191,6 +217,7 @@ public class Build {
                     "              / /\\ \\  / _` || '__|| | / __|| | | || || __|| | | || '__|/ _ \\\n" +
                     "             / ____ \\| (_| || |   | || (__ | |_| || || |_ | |_| || |  |  __/\n" +
                     "            /_/    \\_\\\\__, ||_|   |_| \\___| \\__,_||_| \\__| \\__,_||_|   \\___|\n" +
-                    "                       __/ |                     Build Script Version v" + BUILD_SCRIPT_VERSION + "\n" +
+                    "                       __/ |                     Build Script Version v" + BUILD_SCRIPT_VERSION +
+                    "\n" +
                     "                      |___/";
 }
