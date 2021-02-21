@@ -25,7 +25,7 @@ Anything is subject to change!
 - Baler
 - Kitchen
 - Straw
-- Cereals
+- Wheat
 - Hay
 - Hay bale
 - Straw bale
@@ -97,7 +97,7 @@ Anything is subject to change!
 - Straw bale
   - Baler: Straw
 - Flour
-  - Mill: Cereals
+  - Mill: Wheat
 - Dough
   - Assembler: Flour, Water
 - Pizza - Salami

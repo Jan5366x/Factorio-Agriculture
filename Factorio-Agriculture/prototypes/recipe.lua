@@ -196,7 +196,7 @@ data:extend(
         enabled = true,
         ingredients =
         {
-            {"cereals", 5}
+            {"wheat", 5}
         },
         energy_required = 15,
         result = "flour"

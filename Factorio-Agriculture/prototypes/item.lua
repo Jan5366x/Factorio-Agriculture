@@ -91,11 +91,11 @@ data:extend(
     },
     {
         type = "item",
-        name = "cereals",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        name = "wheat",
+        icon = "__factorio-agriculture__/graphics/icons/wheat.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
-        order = "a[cereals]",
+        order = "a[wheat]",
         stack_size = 100
     },
     {
@@ -137,7 +137,7 @@ data:extend(
     {
         type = "item",
         name = "corn",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/corn.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[corn]",
@@ -290,7 +290,7 @@ data:extend(
     {
         type = "item",
         name = "flour",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/flour.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[flour]",
@@ -308,7 +308,7 @@ data:extend(
     {
         type = "item",
         name = "dough",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/dough.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[dough]",
