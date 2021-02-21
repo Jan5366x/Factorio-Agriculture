@@ -14,10 +14,10 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.0.2";
+    private final static String BUILD_SCRIPT_VERSION = "1.0.3";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
-    private final static String BUILD_DIR = "build";
+    private final static String BUILD_DIR = "Build";
 
     private final static List<String> filesToCleanup = List.of(".keep", "thumbs.db", "desktop.ini");
 

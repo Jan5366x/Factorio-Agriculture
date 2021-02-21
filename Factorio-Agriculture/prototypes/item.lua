@@ -83,7 +83,7 @@ data:extend(
     {
         type = "item",
         name = "straw",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/straw.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[straw]",
@@ -101,7 +101,7 @@ data:extend(
     {
         type = "item",
         name = "hay",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/hay.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[hay]",
@@ -326,7 +326,7 @@ data:extend(
     {
         type = "item",
         name = "pizza-hawaii",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/pizza-hawaii.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pizza-hawaii]",
@@ -335,7 +335,7 @@ data:extend(
     {
         type = "item",
         name = "pizza-margarita",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/pizza-margarita.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pizza-margarita]",
@@ -344,7 +344,7 @@ data:extend(
     {
         type = "item",
         name = "pizza-tonno",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/pizza-tonno.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pizza-tonno]",
