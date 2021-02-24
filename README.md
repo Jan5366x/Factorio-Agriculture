@@ -33,7 +33,7 @@ Anything is subject to change!
 - Corn
 - Potatoes
 - Pineapple
-- Tomatoes
+- Tomato
 - Onions
 - Paprika
 - Carrots
@@ -101,13 +101,13 @@ Anything is subject to change!
 - Dough
   - Assembler: Flour, Water
 - Pizza - Salami
-  - Kitchen: Dough, Tomatoes, Sausage
+  - Kitchen: Dough, Tomato, Sausage
 - Pizza - Hawaii
-  - Kitchen: Dough, Tomatoes, Pineapple, Sausage
+  - Kitchen: Dough, Tomato, Pineapple, Sausage
 - Pizza - Margarita
-  - Kitchen: Dough, Tomatoes
+  - Kitchen: Dough, Tomato
 - Pizza - Tonno
-  - Kitchen: Dough, Tomatoes, raw fish
+  - Kitchen: Dough, Tomato, raw fish
 - Cake - Cherry pie
   - Kitchen: Flour, Cherries, Milk Can, Eggs
 - Cake - Apple pie
@@ -117,9 +117,9 @@ Anything is subject to change!
 - Baked potatoes
   - Kitchen: Potatoes
 - Goulash
-  - Kitchen: Beef, Paprika, Onions, Tomatoes
+  - Kitchen: Beef, Paprika, Onions, Tomato
 - Salad
-  - Kitchen: Lettuce head, Tomatoes
+  - Kitchen: Lettuce head, Tomato
 - Chicken Korma
   - Kitchen: chicken meat,  Spice mixture
 - Bread
