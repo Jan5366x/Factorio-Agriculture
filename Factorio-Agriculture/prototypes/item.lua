@@ -42,16 +42,6 @@ data:extend(
     },
     {
         type = "item",
-        name = "butcher",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
-        icon_size = 64, icon_mipmaps = 4,
-        subgroup = "production-machine",
-        order = "a[butcher]",
-        place_result = "butcher",
-        stack_size = 50
-    },
-    {
-        type = "item",
         name = "mill",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
