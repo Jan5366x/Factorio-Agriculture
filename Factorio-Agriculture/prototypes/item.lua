@@ -396,7 +396,7 @@ data:extend(
     {
         type = "item",
         name = "cheese",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/cheese.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[cheese]",
