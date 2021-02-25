@@ -57,6 +57,7 @@ Anything is subject to change!
 - Bread
 - Salad
 - Chicken Korma
+- Cheese
 
 ## Fluid
 - Biofuel
@@ -93,13 +94,13 @@ Anything is subject to change!
 - Dough
   - Assembler: Flour, Water
 - Pizza - Salami
-  - Kitchen: Dough, Tomato, Sausage
+  - Kitchen: Dough, Tomato, Sausage, Cheese
 - Pizza - Hawaii
-  - Kitchen: Dough, Tomato, Pineapple, Sausage
+  - Kitchen: Dough, Tomato, Pineapple, Sausage,Cheese
 - Pizza - Margarita
-  - Kitchen: Dough, Tomato
+  - Kitchen: Dough, Tomato, Cheese
 - Pizza - Tonno
-  - Kitchen: Dough, Tomato, raw fish
+  - Kitchen: Dough, Tomato, raw fish, Cheese
 - Cake - Cherry pie
   - Kitchen: Flour, Cherry, Milk Can, Eggs
 - Cake - Apple pie
@@ -116,6 +117,8 @@ Anything is subject to change!
   - Kitchen: chicken meat,  Spice mixture
 - Bread
   - Kitchen: Dough
+- Cheese
+  - Kitchen: Milk Can
 - Biofuel
   - Chemical Plant: Corn, Water
 - Oil (Biofuel refinement)

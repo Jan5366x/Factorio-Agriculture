@@ -392,5 +392,14 @@ data:extend(
         subgroup = "raw-resource",
         order = "a[chicken-korma]",
         stack_size = 100
+    },
+    {
+        type = "item",
+        name = "cheese",
+        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        subgroup = "raw-resource",
+        order = "a[cheese]",
+        stack_size = 100
     }
 })

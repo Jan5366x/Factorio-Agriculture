@@ -195,7 +195,8 @@ data:extend(
         {
             {"dough", 1},
             {"tomato", 1},
-            {"sausage", 1}
+            {"sausage", 1},
+            {"cheese", 1}
         },
         energy_required = 15,
         result = "pizza-salami"
@@ -209,7 +210,8 @@ data:extend(
             {"dough", 1},
             {"tomato", 1},
             {"sausage", 1},
-            {"pineapple", 1}
+            {"pineapple", 1},
+            {"cheese", 1}
         },
         energy_required = 15,
         result = "pizza-hawaii"
@@ -221,7 +223,8 @@ data:extend(
         ingredients =
         {
             {"dough", 1},
-            {"tomato", 1}
+            {"tomato", 1},
+            {"cheese", 1}
         },
         energy_required = 15,
         result = "pizza-margarita"
@@ -234,7 +237,8 @@ data:extend(
         {
             {"dough", 1},
             {"tomato", 1},
-            {"raw-fish", 1}
+            {"raw-fish", 1},
+            {"cheese", 1}
         },
         energy_required = 15,
         result = "pizza-tonno"
@@ -337,5 +341,16 @@ data:extend(
         },
         energy_required = 15,
         result = "sausage"
+    },
+    {
+        type = "recipe",
+        name = "cheese",
+        enabled = true,
+        ingredients =
+        {
+            {"milk-can", 4}
+        },
+        energy_required = 15,
+        result = "cheese"
     }
 })
