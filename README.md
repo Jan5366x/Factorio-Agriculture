@@ -10,7 +10,6 @@ Anything is subject to change!
 - Large animal farm
 - Plant farm
 - Tree farm
-- Butcher
 - Mill
 - Kitchen
 
@@ -19,7 +18,6 @@ Anything is subject to change!
 - Large animal farm
 - Plant farm
 - Tree farm
-- Butcher
 - Mill
 - Kitchen
 - Straw
@@ -78,16 +76,14 @@ Anything is subject to change!
   - Assembling machine: iron-plate, copper-plate
 - Tree farm
   - Assembling machine: iron-plate, copper-plate
-- Butcher
-  - Assembling machine: iron-plate, copper-plate
 - Mill
   - Assembling machine: wood, stone-brick
 - Kitchen
   - Assembling machine: iron-plate, copper-plate, stone-brick
 - Beef
-  - Butcher: Cow
+  - Large animal farm: Cow
 - Chicken meat
-  - Butcher: Chicken
+  - Small animal farm: Chicken
 - Hay bale
   - Assembler: Hey
 - Straw bale

@@ -98,18 +98,6 @@ data:extend(
     },
     {
         type = "recipe",
-        name = "butcher",
-        enabled = true,
-        ingredients =
-        {
-            {"iron-plate", 3},
-            {"copper-plate", 3}
-        },
-        energy_required = 15,
-        result = "butcher"
-    },
-    {
-        type = "recipe",
         name = "mill",
         enabled = true,
         ingredients =
