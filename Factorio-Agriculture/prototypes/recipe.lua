@@ -123,25 +123,52 @@ data:extend(
     },
     {
         type = "recipe",
-        name = "beef",
+        name = "cow-growing",
+        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
         enabled = true,
+        subgroup = "large-animal-growing",
         ingredients =
         {
-            {"cow", 1}
+            {"hay-bale", 2},
+            {"straw-bale", 1}
         },
         energy_required = 15,
-        result = "beef"
+        results =
+        {
+            {
+                name = "beef",
+                amount = 2
+            },
+            {
+                name = "milk-can",
+                amount = 5
+            }
+        }
     },
     {
         type = "recipe",
-        name = "chicken-meat",
+        name = "chicken-growing",
+        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
         enabled = true,
+        subgroup = "small-animal-growing",
         ingredients =
         {
-            {"chicken", 1}
+            {"wheat", 5}
         },
         energy_required = 15,
-        result = "chicken-meat"
+        results =
+        {
+            {
+                name = "chicken-meat",
+                amount = 2
+            },
+            {
+                name = "egg",
+                amount = 10
+            }
+        }
     },
     {
         type = "recipe",

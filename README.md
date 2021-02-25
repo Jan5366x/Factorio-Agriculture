@@ -81,10 +81,10 @@ Anything is subject to change!
   - Assembling machine: wood, stone-brick
 - Kitchen
   - Assembling machine: iron-plate, copper-plate, stone-brick
-- Beef
-  - Large animal farm: Cow
-- Chicken meat
-  - Small animal farm: Chicken
+- Cow growing  - "Beef"
+  - Large animal farm: Hay bale, Straw bale
+- Chicken growing - "meat"
+  - Small animal farm: Wheat
 - Hay bale
   - Assembler: Hey
 - Straw bale

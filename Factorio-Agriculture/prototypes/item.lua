@@ -215,15 +215,6 @@ data:extend(
     },
     {
         type = "item",
-        name = "cow",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
-        icon_size = 64, icon_mipmaps = 4,
-        subgroup = "raw-resource",
-        order = "a[cow]",
-        stack_size = 100
-    },
-    {
-        type = "item",
         name = "beef",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
@@ -238,15 +229,6 @@ data:extend(
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[milk-can]",
-        stack_size = 100
-    },
-    {
-        type = "item",
-        name = "chicken",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
-        icon_size = 64, icon_mipmaps = 4,
-        subgroup = "raw-resource",
-        order = "a[chicken]",
         stack_size = 100
     },
     {
