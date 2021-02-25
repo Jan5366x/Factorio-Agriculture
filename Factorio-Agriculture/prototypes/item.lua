@@ -62,16 +62,6 @@ data:extend(
     },
     {
         type = "item",
-        name = "baler",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
-        icon_size = 64, icon_mipmaps = 4,
-        subgroup = "production-machine",
-        order = "a[baler]",
-        place_result = "baler",
-        stack_size = 50
-    },
-    {
-        type = "item",
         name = "kitchen",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
@@ -145,11 +135,11 @@ data:extend(
     },
     {
         type = "item",
-        name = "potatoes",
+        name = "potato",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
-        order = "a[potatoes]",
+        order = "a[potato]",
         stack_size = 100
     },
     {
@@ -172,11 +162,11 @@ data:extend(
     },
     {
         type = "item",
-        name = "onions",
+        name = "onion",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
-        order = "a[onions]",
+        order = "a[onion]",
         stack_size = 100
     },
     {
@@ -190,11 +180,11 @@ data:extend(
     },
     {
         type = "item",
-        name = "carrots",
+        name = "carrot",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
-        order = "a[carrots]",
+        order = "a[carrot]",
         stack_size = 100
     },
     {
@@ -208,29 +198,29 @@ data:extend(
     },
     {
         type = "item",
-        name = "apples",
+        name = "apple",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
-        order = "a[apples]",
+        order = "a[apple]",
         stack_size = 100
     },
     {
         type = "item",
-        name = "pears",
+        name = "pear",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
-        order = "a[pears]",
+        order = "a[pear]",
         stack_size = 100
     },
     {
         type = "item",
-        name = "cherries",
+        name = "cherry",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
-        order = "a[cherries]",
+        order = "a[cherry]",
         stack_size = 100
     },
     {
@@ -280,11 +270,11 @@ data:extend(
     },
     {
         type = "item",
-        name = "eggs",
+        name = "egg",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
-        order = "a[eggs]",
+        order = "a[egg]",
         stack_size = 100
     },
     {
@@ -370,11 +360,11 @@ data:extend(
     },
     {
         type = "item",
-        name = "baked-potatoes",
+        name = "baked-potato",
         icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
-        order = "a[baked-potatoes]",
+        order = "a[baked-potato]",
         stack_size = 100
     },
     {

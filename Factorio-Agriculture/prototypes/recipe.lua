@@ -122,19 +122,6 @@ data:extend(
     },
     {
         type = "recipe",
-        name = "baler",
-        enabled = true,
-        ingredients =
-        {
-            {"iron-plate", 3},
-            {"copper-plate", 1},
-            {"electronic-circuit", 2}
-        },
-        energy_required = 15,
-        result = "baler"
-    },
-    {
-        type = "recipe",
         name = "kitchen",
         enabled = true,
         ingredients =
@@ -219,7 +206,7 @@ data:extend(
         ingredients =
         {
             {"dough", 1},
-            {"tomatoes", 1},
+            {"tomato", 1},
             {"sausage", 1}
         },
         energy_required = 15,
@@ -232,7 +219,7 @@ data:extend(
         ingredients =
         {
             {"dough", 1},
-            {"tomatoes", 1},
+            {"tomato", 1},
             {"sausage", 1},
             {"pineapple", 1}
         },
@@ -246,7 +233,7 @@ data:extend(
         ingredients =
         {
             {"dough", 1},
-            {"tomatoes", 1}
+            {"tomato", 1}
         },
         energy_required = 15,
         result = "pizza-margarita"
@@ -258,7 +245,7 @@ data:extend(
         ingredients =
         {
             {"dough", 1},
-            {"tomatoes", 1},
+            {"tomato", 1},
             {"raw-fish", 1}
         },
         energy_required = 15,
@@ -271,9 +258,9 @@ data:extend(
         ingredients =
         {
             {"flour", 2},
-            {"cherries", 1},
+            {"cherry", 1},
             {"milk-can", 1},
-            {"eggs", 1}
+            {"egg", 1}
         },
         energy_required = 15,
         result = "cake-cherry-pie"
@@ -285,9 +272,9 @@ data:extend(
         ingredients =
         {
             {"flour", 2},
-            {"apples", 1},
+            {"apple", 1},
             {"milk-can", 1},
-            {"eggs", 1}
+            {"egg", 1}
         },
         energy_required = 15,
         result = "cake-apple-pie"
@@ -305,14 +292,14 @@ data:extend(
     },
     {
         type = "recipe",
-        name = "baked-potatoes",
+        name = "baked-potato",
         enabled = true,
         ingredients =
         {
-            {"potatoes", 1}
+            {"potato", 1}
         },
         energy_required = 15,
-        result = "baked-potatoes"
+        result = "baked-potato"
     },
     {
         type = "recipe",
@@ -322,8 +309,8 @@ data:extend(
         {
             {"beef", 1},
             {"paprika", 1},
-            {"onions", 1},
-            {"tomatoes", 3}
+            {"onion", 1},
+            {"tomato", 3}
         },
         energy_required = 15,
         result = "goulash"
@@ -335,7 +322,7 @@ data:extend(
         ingredients =
         {
             {"lettuce-head", 1},
-            {"tomatoes", 1}
+            {"tomato", 1}
         },
         energy_required = 15,
         result = "salad"

@@ -12,7 +12,6 @@ Anything is subject to change!
 - Tree farm
 - Butcher
 - Mill
-- Baler 
 - Kitchen
 
 ## Items
@@ -22,7 +21,6 @@ Anything is subject to change!
 - Tree farm
 - Butcher
 - Mill
-- Baler
 - Kitchen
 - Straw
 - Wheat
@@ -31,16 +29,16 @@ Anything is subject to change!
 - Straw bale
 - Lettuce head
 - Corn
-- Potatoes
+- Potato
 - Pineapple
 - Tomato
-- Onions
+- Onion
 - Paprika
-- Carrots
+- Carrot
 - Spice mixture
-- Apples
-- Pears
-- Cherries
+- Apple
+- Pear
+- Cherry
 - Cow
 - Beef
 - Milk Can
@@ -56,7 +54,7 @@ Anything is subject to change!
 - Pizza - Tonno
 - Cake - Cherry pie
 - Cake - Apple pie
-- Baked potatoes
+- Baked potato
 - Goulash
 - Bread
 - Salad
@@ -84,8 +82,6 @@ Anything is subject to change!
   - Assembling machine: iron-plate, copper-plate
 - Mill
   - Assembling machine: wood, stone-brick
-- Baler
-  - Assembling machine: iron-plate, copper-plate, electronic-circuit
 - Kitchen
   - Assembling machine: iron-plate, copper-plate, stone-brick
 - Beef
@@ -93,9 +89,9 @@ Anything is subject to change!
 - Chicken meat
   - Butcher: Chicken
 - Hay bale
-  - Baler: Hey
+  - Assembler: Hey
 - Straw bale
-  - Baler: Straw
+  - Assembler: Straw
 - Flour
   - Mill: Wheat
 - Dough
@@ -109,15 +105,15 @@ Anything is subject to change!
 - Pizza - Tonno
   - Kitchen: Dough, Tomato, raw fish
 - Cake - Cherry pie
-  - Kitchen: Flour, Cherries, Milk Can, Eggs
+  - Kitchen: Flour, Cherry, Milk Can, Eggs
 - Cake - Apple pie
-  - Kitchen: Flour, Milk Can, Egg, Apples
+  - Kitchen: Flour, Milk Can, Egg, Apple
 - Sausage
   - Kitchen: Beef
 - Baked potatoes
   - Kitchen: Potatoes
 - Goulash
-  - Kitchen: Beef, Paprika, Onions, Tomato
+  - Kitchen: Beef, Paprika, Onion, Tomato
 - Salad
   - Kitchen: Lettuce head, Tomato
 - Chicken Korma
