@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,6 +22,7 @@ public class Build {
         System.out.println(CONSOLE_SEP);
         System.out.println(ASCII_LOGO);
 
+        verifyTranslation();
         prepareModBuildFolder();
         copyModFiles();
         cleanupModFolder();
@@ -34,6 +32,84 @@ public class Build {
         System.out.println(ASCII_LOGO);
         System.out.println(CONSOLE_SEP);
         System.out.println("Build successfully!");
+    }
+
+    private static void verifyTranslation() throws IOException {
+        Set<String> protoTypeNames = new HashSet<>();
+        loadPrototypeNames(protoTypeNames, "item", "item-name");
+        loadPrototypeNames(protoTypeNames, "entities", "entity-name");
+
+        boolean hasDelta = false;
+
+        for (String language : Arrays.asList("de", "en")) {
+            System.out.println("Delta for language " + language + ":");
+
+            Set<String> languageNames = loadLanguageFile(language);
+            HashSet<String> missingInLanguage = new HashSet<>(protoTypeNames);
+            missingInLanguage.removeAll(languageNames);
+            if (!missingInLanguage.isEmpty()) {
+                hasDelta = true;
+                System.out.println("Missing in language file: ");
+                for (String s : missingInLanguage) {
+                    System.out.println(s);
+                }
+            }
+
+            HashSet<String> missingInPrototypes = new HashSet<>(languageNames);
+            missingInPrototypes.removeAll(protoTypeNames);
+            if (!missingInPrototypes.isEmpty()) {
+                hasDelta = true;
+                System.out.println("Missing in prototypes file: ");
+                for (String s : missingInPrototypes) {
+                    System.out.println(s);
+                }
+            }
+        }
+
+        if (hasDelta) {
+            throw new IllegalStateException("Will not build mod archive. Fix your translation first!");
+        }
+    }
+
+    private static Set<String> loadLanguageFile(String language) throws IOException {
+        Set<String> languageEntries = new HashSet<>();
+        List<String> prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "locale", language, "main.cfg"));
+        String iniSection = "";
+
+        int line = 0;
+        for (String prototype : prototypes) {
+            line++;
+            String trimmed = prototype.trim();
+            if (!trimmed.isEmpty()) {
+                if (trimmed.startsWith("[") && trimmed.endsWith("]")) {
+                    iniSection = trimmed.substring(1, trimmed.length() - 1);
+                } else {
+                    int toSplit = trimmed.indexOf('=');
+                    if (toSplit < 1) {
+                        throw new IllegalStateException("Language files invalid in line " + line + ": Missing =");
+                    }
+                    String name = trimmed.substring(0, toSplit);
+                    if (iniSection.isEmpty()) {
+                        throw new IllegalStateException(
+                                "Language files invalid in line " + line + ": No ini section started");
+                    }
+                    languageEntries.add(iniSection + "." + name);
+                }
+            }
+        }
+        return languageEntries;
+    }
+
+    private static void loadPrototypeNames(Set<String> protoTypeNames, String filename, String prefix)
+            throws IOException {
+        List<String> prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
+        for (String prototype : prototypes) {
+            String trimmed = prototype.trim();
+            if (trimmed.startsWith("name = \"")) {
+                String itemName = trimmed.substring(8, trimmed.length() - 2);
+                protoTypeNames.add(prefix + "." + itemName);
+            }
+        }
     }
 
     private static void prepareModBuildFolder() throws Exception {
@@ -48,8 +124,9 @@ public class Build {
         System.out.println("expected build dir structure: " + expectedDirStructure);
 
         // sanity check
-        if (!directory.getAbsolutePath().contains(expectedDirStructure))
+        if (!directory.getAbsolutePath().contains(expectedDirStructure)) {
             throw new IOException("Build dir don't met the expected folder structure!");
+        }
 
 
         if (directory.exists()) {
@@ -87,15 +164,16 @@ public class Build {
     }
 
     private static boolean cleanupFilter(Path path) {
-        if (!Files.isRegularFile(path))
+        if (!Files.isRegularFile(path)) {
             return false;
+        }
 
         var fileName = path.getFileName().toString();
 
         return filesToCleanup.stream().anyMatch(s -> s.equalsIgnoreCase(fileName));
     }
 
-    private static void renameAndZipMod() throws Exception  {
+    private static void renameAndZipMod() throws Exception {
         System.out.println(CONSOLE_SEP);
         System.out.println("Rename mod folder and create zip file...");
         System.out.println(CONSOLE_SEP);
@@ -107,7 +185,7 @@ public class Build {
         System.out.println("Mod name: " + name);
 
         var zipName = new File(BUILD_DIR + File.separator + name + ".zip").getAbsolutePath();
-        var rawModFolder = new File( BUILD_DIR + File.separator + MOD_SUB_DIR);
+        var rawModFolder = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
         var preparedModFolder = renameDirectory(rawModFolder.getAbsolutePath(), name);
 
         try (var fos = new FileOutputStream(zipName); var zipOut = new ZipOutputStream(fos)) {
@@ -150,7 +228,8 @@ public class Build {
     public static void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation)
             throws IOException {
 
-        System.out.println("Copy Directory\nFrom: " + sourceDirectoryLocation + "\nTo: " + destinationDirectoryLocation);
+        System.out.println(
+                "Copy Directory\nFrom: " + sourceDirectoryLocation + "\nTo: " + destinationDirectoryLocation);
 
         Files.walk(Paths.get(sourceDirectoryLocation))
                 .forEach(source -> {
@@ -166,9 +245,10 @@ public class Build {
     }
 
     private static void purgeDirectory(File dir) {
-        for (File file: Objects.requireNonNull(dir.listFiles())) {
-            if (file.isDirectory())
+        for (File file : Objects.requireNonNull(dir.listFiles())) {
+            if (file.isDirectory()) {
                 purgeDirectory(file);
+            }
             file.delete();
         }
     }
@@ -187,19 +267,21 @@ public class Build {
             }
             var children = fileToZip.listFiles();
 
-            for (File childFile : Objects.requireNonNull(children))
+            for (File childFile : Objects.requireNonNull(children)) {
                 zipFile(childFile, fileName + "/" + childFile.getName(), zipOut);
+            }
 
             return;
         }
-        try(var fis = new FileInputStream(fileToZip)) {
+        try (var fis = new FileInputStream(fileToZip)) {
             var zipEntry = new ZipEntry(fileName);
             zipOut.putNextEntry(zipEntry);
             var bytes = new byte[1024];
 
             int length;
-            while ((length = fis.read(bytes)) >= 0)
+            while ((length = fis.read(bytes)) >= 0) {
                 zipOut.write(bytes, 0, length);
+            }
         }
     }
 
