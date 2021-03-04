@@ -90,7 +90,7 @@ data:extend(
     {
         type = "item",
         name = "hay-bale",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/hay-bale.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[hay-bale]",
