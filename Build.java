@@ -11,7 +11,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.0.3";
+    private final static String BUILD_SCRIPT_VERSION = "1.1.0";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -23,6 +23,7 @@ public class Build {
         System.out.println(ASCII_LOGO);
 
         verifyTranslation();
+
         prepareModBuildFolder();
         copyModFiles();
         cleanupModFolder();
@@ -74,7 +75,7 @@ public class Build {
     private static Set<String> loadLanguageFile(String language) throws IOException {
         Set<String> languageEntries = new HashSet<>();
         List<String> prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "locale", language, "main.cfg"));
-        String iniSection = "";
+        var iniSection = "";
 
         int line = 0;
         for (String prototype : prototypes) {
