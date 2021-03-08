@@ -1,9 +1,12 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
-import java.util.function.Predicate;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 /**
@@ -11,7 +14,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.2.0";
+    private final static String BUILD_SCRIPT_VERSION = "1.2.1";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -53,7 +56,7 @@ public class Build {
         if (isUnix()) {
             localDeploy(new File(userHome + "/.factorio/mods"));
         } else if (isWindows()) {
-            localDeploy(new File(userHome + "\\Roaming\\Factorio\\mods"));
+            localDeploy(new File(userHome + "\\AppData\\Roaming\\Factorio\\mods"));
         } else {
             println("Local Deployment FAILED! (OS not supported!)");
         }
@@ -64,7 +67,14 @@ public class Build {
         println("Local Deployment - " + os.toUpperCase());
         println(CONSOLE_SEP);
         println("Local deploy target: " + targetDir.getAbsolutePath());
-        throw new Exception("Local deploy not implemented!");
+
+        if (!targetDir.isDirectory())
+            throw new Exception("Target dir is not a directory! (" + targetDir.getAbsolutePath() +  ")");
+
+        var zipFileName = getModZipName() + ".zip";
+        var zip = new File(BUILD_DIR + File.separator + zipFileName);
+        println("Build File: " + zip.getAbsolutePath());
+        Files.copy(zip.toPath(), targetDir.toPath().resolve(zipFileName), StandardCopyOption.REPLACE_EXISTING);
     }
 
     private static void listArguments(List<String> arguments) {
@@ -212,6 +222,14 @@ public class Build {
         return filesToCleanup.stream().anyMatch(s -> s.equalsIgnoreCase(fileName));
     }
 
+    private static String getModZipName() throws Exception {
+        return getModZipName(fetchModVersionString());
+    }
+
+    private static String getModZipName(final String version) {
+        return MOD_SUB_DIR.toLowerCase(Locale.ENGLISH) + "_" + version;
+    }
+
     private static void renameAndZipMod() throws Exception {
         println(CONSOLE_SEP);
         println("Rename mod folder and create zip file...");
@@ -220,7 +238,7 @@ public class Build {
         var version = fetchModVersionString();
         println("Mod version: " + version);
 
-        var name = MOD_SUB_DIR.toLowerCase(Locale.ENGLISH) + "_" + version;
+        var name = getModZipName(version);
         println("Mod name: " + name);
 
         var zipName = new File(BUILD_DIR + File.separator + name + ".zip").getAbsolutePath();
