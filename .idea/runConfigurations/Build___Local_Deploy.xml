@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Build &amp; Local Deploy" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="Build" />
+    <module name="Factorio-Agriculture" />
+    <option name="PROGRAM_PARAMETERS" value="-localdeploy" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
