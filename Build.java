@@ -14,7 +14,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.2.1";
+    private final static String BUILD_SCRIPT_VERSION = "1.2.2";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -27,8 +27,7 @@ public class Build {
     public static void main(String[] args) {
         try {
             var arguments = Arrays.asList(args);
-            println(CONSOLE_SEP);
-            println(ASCII_LOGO);
+            println(CONSOLE_SEP, ASCII_LOGO);
 
             listArguments(arguments);
             verifyTranslation();
@@ -42,10 +41,7 @@ public class Build {
                 localDeploy();
             }
 
-            println(CONSOLE_SEP);
-            println(ASCII_LOGO);
-            println(CONSOLE_SEP);
-            println("Build successfully!");
+            println(CONSOLE_SEP, ASCII_LOGO, CONSOLE_SEP, "Build successfully!");
         } catch (Exception e) {
             e.printStackTrace(System.out);
             System.exit(1);
@@ -63,9 +59,7 @@ public class Build {
     }
 
     private static void localDeploy(final File targetDir) throws Exception {
-        println(CONSOLE_SEP);
-        println("Local Deployment - " + os.toUpperCase());
-        println(CONSOLE_SEP);
+        println(CONSOLE_SEP, "Local Deployment - " + os.toUpperCase(), CONSOLE_SEP);
         println("Local deploy target: " + targetDir.getAbsolutePath());
 
         if (!targetDir.isDirectory())
@@ -78,9 +72,7 @@ public class Build {
     }
 
     private static void listArguments(List<String> arguments) {
-        println(CONSOLE_SEP);
-        println("Arguments: " + String.join("; ", arguments));
-        println(CONSOLE_SEP);
+        println(CONSOLE_SEP, "Arguments: " + String.join("; ", arguments), CONSOLE_SEP);
     }
 
     private static void verifyTranslation() throws IOException {
@@ -162,9 +154,7 @@ public class Build {
     }
 
     private static void prepareModBuildFolder() throws Exception {
-        println(CONSOLE_SEP);
-        println("Prepare mod build folder...");
-        println(CONSOLE_SEP);
+        println(CONSOLE_SEP, "Prepare mod build folder...", CONSOLE_SEP);
 
         var directory = new File(BUILD_DIR);
 
@@ -188,9 +178,7 @@ public class Build {
     }
 
     private static void copyModFiles() throws Exception {
-        println(CONSOLE_SEP);
-        println("Copy mod files...");
-        println(CONSOLE_SEP);
+        println(CONSOLE_SEP, "Copy mod files...", CONSOLE_SEP);
 
         var sourceDir = new File(MOD_SUB_DIR);
         var destination = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
@@ -198,9 +186,7 @@ public class Build {
     }
 
     private static void cleanupModFolder() throws Exception {
-        println(CONSOLE_SEP);
-        println("Cleanup...");
-        println(CONSOLE_SEP);
+        println(CONSOLE_SEP, "Cleanup...", CONSOLE_SEP);
 
         filesToCleanup.forEach(s -> println("-> " + s));
 
@@ -231,9 +217,7 @@ public class Build {
     }
 
     private static void renameAndZipMod() throws Exception {
-        println(CONSOLE_SEP);
-        println("Rename mod folder and create zip file...");
-        println(CONSOLE_SEP);
+        println(CONSOLE_SEP, "Rename mod folder and create zip file...", CONSOLE_SEP);
 
         var version = fetchModVersionString();
         println("Mod version: " + version);
@@ -285,8 +269,7 @@ public class Build {
     public static void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation)
             throws IOException {
 
-        println(
-                "Copy Directory\nFrom: " + sourceDirectoryLocation + "\nTo: " + destinationDirectoryLocation);
+        println("Copy Directory\nFrom: " + sourceDirectoryLocation + "\nTo: " + destinationDirectoryLocation);
 
         Files.walk(Paths.get(sourceDirectoryLocation))
                 .forEach(source -> {
@@ -353,8 +336,10 @@ public class Build {
         return (os.contains("nix") || os.contains("nux") || os.contains("aix"));
     }
 
-    private static void println(final String line) {
-        System.out.println(line);
+    private static void println(final String... lines) {
+        for (String line : lines) {
+            System.out.println(line);
+        }
     }
 
     private final static String CONSOLE_SEP = "-".repeat(79);
