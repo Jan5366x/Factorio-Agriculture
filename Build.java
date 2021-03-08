@@ -3,36 +3,74 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
 /**
  * Build Factorio Agriculture Mod - Zip File
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.1.0";
+    private final static String BUILD_SCRIPT_VERSION = "1.2.0";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
 
     private final static List<String> filesToCleanup = List.of(".keep", "thumbs.db", "desktop.ini");
 
-    public static void main(String[] args) throws Exception {
-        System.out.println(CONSOLE_SEP);
-        System.out.println(ASCII_LOGO);
+    private final static String os = System.getProperty("os.name").toLowerCase();
+    private final static String userHome = System.getProperty("user.home");
 
-        verifyTranslation();
+    public static void main(String[] args) {
+        try {
+            var arguments = Arrays.asList(args);
+            println(CONSOLE_SEP);
+            println(ASCII_LOGO);
 
-        prepareModBuildFolder();
-        copyModFiles();
-        cleanupModFolder();
-        renameAndZipMod();
+            listArguments(arguments);
+            verifyTranslation();
 
-        System.out.println(CONSOLE_SEP);
-        System.out.println(ASCII_LOGO);
-        System.out.println(CONSOLE_SEP);
-        System.out.println("Build successfully!");
+            prepareModBuildFolder();
+            copyModFiles();
+            cleanupModFolder();
+            renameAndZipMod();
+
+            if (arguments.contains("-localdeploy")) {
+                localDeploy();
+            }
+
+            println(CONSOLE_SEP);
+            println(ASCII_LOGO);
+            println(CONSOLE_SEP);
+            println("Build successfully!");
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+            System.exit(1);
+        }
+    }
+
+    private static void localDeploy() throws Exception {
+        if (isUnix()) {
+            localDeploy(new File(userHome + "/.factorio/mods"));
+        } else if (isWindows()) {
+            localDeploy(new File(userHome + "\\Roaming\\Factorio\\mods"));
+        } else {
+            println("Local Deployment FAILED! (OS not supported!)");
+        }
+    }
+
+    private static void localDeploy(final File targetDir) throws Exception {
+        println(CONSOLE_SEP);
+        println("Local Deployment - " + os.toUpperCase());
+        println(CONSOLE_SEP);
+        println("Local deploy target: " + targetDir.getAbsolutePath());
+        throw new Exception("Local deploy not implemented!");
+    }
+
+    private static void listArguments(List<String> arguments) {
+        println(CONSOLE_SEP);
+        println("Arguments: " + String.join("; ", arguments));
+        println(CONSOLE_SEP);
     }
 
     private static void verifyTranslation() throws IOException {
@@ -43,16 +81,16 @@ public class Build {
         boolean hasDelta = false;
 
         for (String language : Arrays.asList("de", "en")) {
-            System.out.println("Delta for language " + language + ":");
+            println("Delta for language " + language + ":");
 
             Set<String> languageNames = loadLanguageFile(language);
             HashSet<String> missingInLanguage = new HashSet<>(protoTypeNames);
             missingInLanguage.removeAll(languageNames);
             if (!missingInLanguage.isEmpty()) {
                 hasDelta = true;
-                System.out.println("Missing in language file: ");
+                println("Missing in language file: ");
                 for (String s : missingInLanguage) {
-                    System.out.println(s);
+                    println(s);
                 }
             }
 
@@ -60,9 +98,9 @@ public class Build {
             missingInPrototypes.removeAll(protoTypeNames);
             if (!missingInPrototypes.isEmpty()) {
                 hasDelta = true;
-                System.out.println("Missing in prototypes file: ");
+                println("Missing in prototypes file: ");
                 for (String s : missingInPrototypes) {
-                    System.out.println(s);
+                    println(s);
                 }
             }
         }
@@ -114,15 +152,15 @@ public class Build {
     }
 
     private static void prepareModBuildFolder() throws Exception {
-        System.out.println(CONSOLE_SEP);
-        System.out.println("Prepare mod build folder...");
-        System.out.println(CONSOLE_SEP);
+        println(CONSOLE_SEP);
+        println("Prepare mod build folder...");
+        println(CONSOLE_SEP);
 
         var directory = new File(BUILD_DIR);
 
-        System.out.println("build dir: " + directory.getAbsolutePath());
+        println("build dir: " + directory.getAbsolutePath());
         var expectedDirStructure = PROJECT_DIR + File.separator + BUILD_DIR;
-        System.out.println("expected build dir structure: " + expectedDirStructure);
+        println("expected build dir structure: " + expectedDirStructure);
 
         // sanity check
         if (!directory.getAbsolutePath().contains(expectedDirStructure)) {
@@ -131,18 +169,18 @@ public class Build {
 
 
         if (directory.exists()) {
-            System.out.println("Build dir detected!\n\t-> Content will be purged!");
+            println("Build dir detected!\n\t-> Content will be purged!");
             purgeDirectory(directory);
         } else {
-            System.out.println("Build dir don't exists!\n\t-> Empty build dir will be created!");
+            println("Build dir don't exists!\n\t-> Empty build dir will be created!");
             directory.mkdir();
         }
     }
 
     private static void copyModFiles() throws Exception {
-        System.out.println(CONSOLE_SEP);
-        System.out.println("Copy mod files...");
-        System.out.println(CONSOLE_SEP);
+        println(CONSOLE_SEP);
+        println("Copy mod files...");
+        println(CONSOLE_SEP);
 
         var sourceDir = new File(MOD_SUB_DIR);
         var destination = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
@@ -150,11 +188,11 @@ public class Build {
     }
 
     private static void cleanupModFolder() throws Exception {
-        System.out.println(CONSOLE_SEP);
-        System.out.println("Cleanup...");
-        System.out.println(CONSOLE_SEP);
+        println(CONSOLE_SEP);
+        println("Cleanup...");
+        println(CONSOLE_SEP);
 
-        filesToCleanup.forEach(s -> System.out.println("-> " + s));
+        filesToCleanup.forEach(s -> println("-> " + s));
 
         var dir = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
         try (var paths = Files.walk(dir.toPath())) {
@@ -175,15 +213,15 @@ public class Build {
     }
 
     private static void renameAndZipMod() throws Exception {
-        System.out.println(CONSOLE_SEP);
-        System.out.println("Rename mod folder and create zip file...");
-        System.out.println(CONSOLE_SEP);
+        println(CONSOLE_SEP);
+        println("Rename mod folder and create zip file...");
+        println(CONSOLE_SEP);
 
         var version = fetchModVersionString();
-        System.out.println("Mod version: " + version);
+        println("Mod version: " + version);
 
         var name = MOD_SUB_DIR.toLowerCase(Locale.ENGLISH) + "_" + version;
-        System.out.println("Mod name: " + name);
+        println("Mod name: " + name);
 
         var zipName = new File(BUILD_DIR + File.separator + name + ".zip").getAbsolutePath();
         var rawModFolder = new File(BUILD_DIR + File.separator + MOD_SUB_DIR);
@@ -229,7 +267,7 @@ public class Build {
     public static void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation)
             throws IOException {
 
-        System.out.println(
+        println(
                 "Copy Directory\nFrom: " + sourceDirectoryLocation + "\nTo: " + destinationDirectoryLocation);
 
         Files.walk(Paths.get(sourceDirectoryLocation))
@@ -237,7 +275,7 @@ public class Build {
                     var destination = Paths.get(destinationDirectoryLocation, source.toString()
                             .substring(sourceDirectoryLocation.length()));
                     try {
-                        System.out.println("-> " + source.getFileName());
+                        println("-> " + source.getFileName());
                         Files.copy(source, destination);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -284,6 +322,21 @@ public class Build {
                 zipOut.write(bytes, 0, length);
             }
         }
+    }
+    public static boolean isWindows() {
+        return os.contains("win");
+    }
+
+    public static boolean isMac() {
+        return os.contains("mac");
+    }
+
+    public static boolean isUnix() {
+        return (os.contains("nix") || os.contains("nux") || os.contains("aix"));
+    }
+
+    private static void println(final String line) {
+        System.out.println(line);
     }
 
     private final static String CONSOLE_SEP = "-".repeat(79);
