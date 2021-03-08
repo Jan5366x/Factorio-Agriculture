@@ -351,7 +351,7 @@ data:extend(
     {
         type = "item",
         name = "bread",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/icons/bread.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[bread]",
