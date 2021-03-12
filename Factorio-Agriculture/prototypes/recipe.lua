@@ -367,7 +367,7 @@ data:extend(
             {"dough", 2}
         },
         energy_required = 15,
-        result = "sausage"
+        result = "bread"
     },
     {
         type = "recipe",
