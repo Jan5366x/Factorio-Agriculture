@@ -14,7 +14,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.2.2";
+    private final static String BUILD_SCRIPT_VERSION = "1.2.4";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -24,6 +24,8 @@ public class Build {
     private final static String os = System.getProperty("os.name").toLowerCase();
     private final static String userHome = System.getProperty("user.home");
 
+    private static int warningCount = 0;
+
     public static void main(String[] args) {
         try {
             var arguments = Arrays.asList(args);
@@ -31,7 +33,7 @@ public class Build {
 
             listArguments(arguments);
             verifyTranslation();
-
+            verifyGraphics();
             prepareModBuildFolder();
             copyModFiles();
             cleanupModFolder();
@@ -41,11 +43,27 @@ public class Build {
                 localDeploy();
             }
 
-            println(CONSOLE_SEP, ASCII_LOGO, CONSOLE_SEP, "Build successfully!");
+            println(CONSOLE_SEP, ASCII_LOGO, CONSOLE_SEP,
+                    warningCount == 0
+                            ? "✓ Build successfully!"
+                            : "⚠ Build finished with " + warningCount + " warning(s)!");
+
         } catch (Exception e) {
             e.printStackTrace(System.out);
             System.exit(1);
         }
+    }
+
+    private static void verifyGraphics() {
+        println(CONSOLE_SEP, "Verify Graphics...", CONSOLE_SEP);
+
+        // TODO implement test for placeholder files
+        warn("Verify graphics check not implemented!");
+    }
+
+    private static void warn(String message) {
+        println("⚠ " + message);
+        warningCount++;
     }
 
     private static void localDeploy() throws Exception {
