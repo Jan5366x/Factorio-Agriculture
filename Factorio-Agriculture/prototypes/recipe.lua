@@ -16,7 +16,7 @@ data:extend(
             {type="fluid", name="biofuel", amount=10}
         },
         main_product= "",
-        icon = "__base__/graphics/item/fluid/heavy-oil-cracking.png",
+        icon = "__base__/graphics/icons/fluid/heavy-oil-cracking.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "fluid-recipes",
         order = "b[fluid-chemistry]-a[heavy-oil-cracking]",
@@ -43,7 +43,7 @@ data:extend(
         {
             {type="fluid", name="light-oil", amount=45},
         },
-        icon = "__base__/graphics/item/fluid/advanced-oil-processing.png",
+        icon = "__base__/graphics/icons/fluid/advanced-oil-processing.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "fluid-recipes",
         order = "a[oil-processing]-b[biofuel-refinement]"
