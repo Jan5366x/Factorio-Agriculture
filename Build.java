@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -50,11 +51,7 @@ public class Build {
             }
 
             if (arguments.contains("-launch")) {
-                if (Desktop.isDesktopSupported()) {
-                    Desktop.getDesktop().browse(new URI("steam://run/427520/"));
-                    // Wait for OS to take over and detach
-                    Thread.sleep(5000);
-                }
+                launchGame();
             }
 
             println(CONSOLE_SEP, ASCII_LOGO, CONSOLE_SEP,
@@ -79,6 +76,15 @@ public class Build {
 
     private static void success(String message) {
         println("✓ " + message);
+    }
+
+    private static void launchGame() throws IOException, URISyntaxException, InterruptedException {
+        println(CONSOLE_SEP, "Launching Game", CONSOLE_SEP);
+        if (Desktop.isDesktopSupported()) {
+            Desktop.getDesktop().browse(new URI("steam://run/427520/"));
+            // Wait for OS to take over and detach
+            Thread.sleep(5000);
+        }
     }
 
     private static void localDeploy() throws Exception {
