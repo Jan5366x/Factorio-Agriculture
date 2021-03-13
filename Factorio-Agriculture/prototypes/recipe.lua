@@ -124,7 +124,7 @@ data:extend(
     {
         type = "recipe",
         name = "cow-growing",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         enabled = true,
         subgroup = "large-animal-growing",
@@ -149,7 +149,7 @@ data:extend(
     {
         type = "recipe",
         name = "chicken-growing",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         enabled = true,
         subgroup = "small-animal-growing",
