@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 /**
@@ -14,7 +15,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.2.4";
+    private final static String BUILD_SCRIPT_VERSION = "1.2.5";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -187,10 +188,10 @@ public class Build {
 
 
         if (directory.exists()) {
-            println("Build dir detected!\n\t-> Content will be purged!");
+            println("Build dir detected!\n-> Content will be purged!");
             purgeDirectory(directory);
         } else {
-            println("Build dir don't exists!\n\t-> Empty build dir will be created!");
+            println("Build dir don't exists!\n-> Empty build dir will be created!");
             directory.mkdir();
         }
     }
@@ -289,17 +290,20 @@ public class Build {
 
         println("Copy Directory\nFrom: " + sourceDirectoryLocation + "\nTo: " + destinationDirectoryLocation);
 
+        final var filesCopied = new AtomicInteger();
         Files.walk(Paths.get(sourceDirectoryLocation))
                 .forEach(source -> {
                     var destination = Paths.get(destinationDirectoryLocation, source.toString()
                             .substring(sourceDirectoryLocation.length()));
                     try {
-                        println("-> " + source.getFileName());
                         Files.copy(source, destination);
+                        filesCopied.incrementAndGet();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 });
+
+        println("-> " + filesCopied.get() + " files copied!");
     }
 
     private static void purgeDirectory(File dir) {
