@@ -56,16 +56,16 @@ public class Build {
         }
     }
 
-    private static void verifyGraphics() {
-        println(CONSOLE_SEP, "Verify Graphics...", CONSOLE_SEP);
-
-        // TODO implement test for placeholder files
-        warn("Verify graphics check not implemented!");
+    private static void warn(String message, int tabs) {
+        println("\t".repeat(tabs) + "⚠ " + message);
+        warningCount++;
+    }
+    private static void warn(String message) {
+        warn(message, 0);
     }
 
-    private static void warn(String message) {
-        println("⚠ " + message);
-        warningCount++;
+    private static void success(String message) {
+        println("✓ " + message);
     }
 
     private static void localDeploy() throws Exception {
@@ -97,46 +97,63 @@ public class Build {
     }
 
     private static void verifyTranslation() throws IOException {
+        println(CONSOLE_SEP, "Verify Translations...", CONSOLE_SEP);
+
         Set<String> protoTypeNames = new HashSet<>();
         loadPrototypeNames(protoTypeNames, "item", "item-name");
         loadPrototypeNames(protoTypeNames, "entities", "entity-name");
         loadPrototypeNames(protoTypeNames, "recipe", "recipe-name");
         loadPrototypeNames(protoTypeNames, "technology", "technology-name");
 
-        boolean hasDelta = false;
-
         for (String language : Arrays.asList("de", "en")) {
-            println("Delta for language " + language + ":");
-
             Set<String> languageNames = loadLanguageFile(language);
             HashSet<String> missingInLanguage = new HashSet<>(protoTypeNames);
+            HashSet<String> missingInPrototypes = new HashSet<>(languageNames);
             missingInLanguage.removeAll(languageNames);
+            missingInPrototypes.removeAll(protoTypeNames);
+
+            if (missingInLanguage.isEmpty() && missingInPrototypes.isEmpty()) {
+                success("Language " + language + " is all good");
+            } else {
+                println("Delta for language " + language + ":");
+            }
+
             if (!missingInLanguage.isEmpty()) {
                 List<String> missingInLanguageSorted = new ArrayList<>(missingInLanguage);
                 missingInLanguageSorted.sort(Comparator.naturalOrder());
-                hasDelta = true;
                 println("\tMissing in language file: ");
                 for (String s : missingInLanguageSorted) {
-                    println("\t\t" + s);
+                    warn(s, 2);
                 }
             }
 
-            HashSet<String> missingInPrototypes = new HashSet<>(languageNames);
-            missingInPrototypes.removeAll(protoTypeNames);
+
             if (!missingInPrototypes.isEmpty()) {
                 List<String> missingInPrototypesSorted = new ArrayList<>(missingInPrototypes);
                 missingInPrototypesSorted.sort(Comparator.naturalOrder());
-                hasDelta = true;
                 println("\tMissing in prototypes file: ");
                 for (String s : missingInPrototypesSorted) {
-                    println("\t\t" + s);
+                    warn(s, 2);
                 }
             }
         }
+    }
 
-        if (hasDelta) {
-            throw new IllegalStateException("Will not build mod archive. Fix your translation first!");
+    private static void verifyGraphics() throws IOException {
+        println(CONSOLE_SEP, "Verify Graphics...", CONSOLE_SEP);
+
+        List<String> iconNames = new ArrayList<>();
+        loadIconNames(iconNames, "item");
+        loadIconNames(iconNames, "technology");
+
+        if (!iconNames.isEmpty()) {
+            println("Placeholder icon still used for:");
+            for (String iconName : iconNames) {
+                warn(iconName);
+            }
         }
+
+        // TODO: Check referenced files actually exist
     }
 
     private static Set<String> loadLanguageFile(String language) throws IOException {
@@ -166,6 +183,23 @@ public class Build {
             }
         }
         return languageEntries;
+    }
+
+    private static void loadIconNames(List<String> iconNames, String filename) throws IOException {
+        List<String> prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
+        String name = "";
+        int lineIdx = 0;
+        for (String prototype : prototypes) {
+            lineIdx++;
+            String trimmed = prototype.trim();
+            if (trimmed.startsWith("name = \"")) {
+                name = trimmed.substring(8, trimmed.length() - 2);
+            } else if (trimmed.startsWith("icon = \"")) {
+                if (trimmed.endsWith("placeholder.png\",")) {
+                    iconNames.add(name + " (" + filename + ".lua:" + lineIdx + ")");
+                }
+            }
+        }
     }
 
     private static void loadPrototypeNames(Set<String> protoTypeNames, String filename, String prefix)
