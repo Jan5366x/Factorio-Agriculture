@@ -360,7 +360,7 @@ data:extend(
     {
         type = "item",
         name = "salad",
-        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/salad.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[salad]",
