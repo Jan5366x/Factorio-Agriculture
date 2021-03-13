@@ -31,6 +31,7 @@ public class Build {
     private final static String userHome = System.getProperty("user.home");
 
     private static int warningCount = 0;
+    private static boolean deployed = false;
 
     public static void main(String[] args) {
         try {
@@ -80,10 +81,17 @@ public class Build {
 
     private static void launchGame() throws IOException, URISyntaxException, InterruptedException {
         println(CONSOLE_SEP, "Launching Game", CONSOLE_SEP);
+
+        if (!deployed) {
+            warn("Factorio can't be launched without new deployment! (add: -localdeploy)");
+            return;
+        }
         if (Desktop.isDesktopSupported()) {
             Desktop.getDesktop().browse(new URI("steam://run/427520/"));
             // Wait for OS to take over and detach
             Thread.sleep(5000);
+        } else {
+            warn("This system don't support the launch game feature!");
         }
     }
 
@@ -109,6 +117,7 @@ public class Build {
         var zip = new File(BUILD_DIR + File.separator + zipFileName);
         println("Build File: " + zip.getAbsolutePath());
         Files.copy(zip.toPath(), targetDir.toPath().resolve(zipFileName), StandardCopyOption.REPLACE_EXISTING);
+        deployed = true;
     }
 
     private static void listArguments(List<String> arguments) {
@@ -124,7 +133,7 @@ public class Build {
         loadPrototypeNames(protoTypeNames, "recipe", "recipe-name");
         loadPrototypeNames(protoTypeNames, "technology", "technology-name");
 
-        for (String language : Arrays.asList("de", "en")) {
+        for (var language : Arrays.asList("de", "en")) {
             Set<String> languageNames = loadLanguageFile(language);
             HashSet<String> missingInLanguage = new HashSet<>(protoTypeNames);
             HashSet<String> missingInPrototypes = new HashSet<>(languageNames);
@@ -141,8 +150,8 @@ public class Build {
                 List<String> missingInLanguageSorted = new ArrayList<>(missingInLanguage);
                 missingInLanguageSorted.sort(Comparator.naturalOrder());
                 println("\tMissing in language file: ");
-                for (String s : missingInLanguageSorted) {
-                    warn(s, 2);
+                for (var str : missingInLanguageSorted) {
+                    warn(str, 2);
                 }
             }
 
@@ -151,8 +160,8 @@ public class Build {
                 List<String> missingInPrototypesSorted = new ArrayList<>(missingInPrototypes);
                 missingInPrototypesSorted.sort(Comparator.naturalOrder());
                 println("\tMissing in prototypes file: ");
-                for (String s : missingInPrototypesSorted) {
-                    warn(s, 2);
+                for (var str : missingInPrototypesSorted) {
+                    warn(str, 2);
                 }
             }
         }
@@ -167,7 +176,7 @@ public class Build {
 
         if (!iconNames.isEmpty()) {
             println("Placeholder icon still used for:");
-            for (String iconName : iconNames) {
+            for (var iconName : iconNames) {
                 warn(iconName);
             }
         }
