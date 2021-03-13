@@ -8,7 +8,7 @@ data:extend(
     {
         type = "assembling-machine",
         name = "small-animal-farm",
-        icon = "__base__/graphics/icons/assembling-machine-1.png",
+        icon = "__base__/graphics/item/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "small-animal-farm"},
@@ -106,7 +106,7 @@ data:extend(
     {
         type = "assembling-machine",
         name = "large-animal-farm",
-        icon = "__base__/graphics/icons/assembling-machine-1.png",
+        icon = "__base__/graphics/item/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "large-animal-farm"},
@@ -205,7 +205,7 @@ data:extend(
     {
         type = "assembling-machine",
         name = "plant-farm",
-        icon = "__base__/graphics/icons/assembling-machine-1.png",
+        icon = "__base__/graphics/item/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "plant-farm"},
@@ -304,7 +304,7 @@ data:extend(
     {
         type = "assembling-machine",
         name = "tree-farm",
-        icon = "__base__/graphics/icons/assembling-machine-1.png",
+        icon = "__base__/graphics/item/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "tree-farm"},
@@ -403,7 +403,7 @@ data:extend(
     {
         type = "assembling-machine",
         name = "mill",
-        icon = "__base__/graphics/icons/assembling-machine-1.png",
+        icon = "__base__/graphics/item/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "mill"},
@@ -502,7 +502,7 @@ data:extend(
     {
         type = "assembling-machine",
         name = "kitchen",
-        icon = "__base__/graphics/icons/assembling-machine-1.png",
+        icon = "__base__/graphics/item/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "kitchen"},

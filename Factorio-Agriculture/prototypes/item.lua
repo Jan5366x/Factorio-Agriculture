@@ -3,7 +3,7 @@ data:extend(
     {
         type = "item",
         name = "small-animal-farm",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "production-machine",
         order = "a[small-animal-farm]",
@@ -13,7 +13,7 @@ data:extend(
     {
         type = "item",
         name = "large-animal-farm",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "production-machine",
         order = "a[large-animal-farm]",
@@ -23,7 +23,7 @@ data:extend(
     {
         type = "item",
         name = "plant-farm",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "production-machine",
         order = "a[plant-farm]",
@@ -33,7 +33,7 @@ data:extend(
     {
         type = "item",
         name = "tree-farm",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "production-machine",
         order = "a[tree-farm]",
@@ -43,7 +43,7 @@ data:extend(
     {
         type = "item",
         name = "mill",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "production-machine",
         order = "a[mill]",
@@ -53,7 +53,7 @@ data:extend(
     {
         type = "item",
         name = "kitchen",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "production-machine",
         order = "a[kitchen]",
@@ -63,7 +63,7 @@ data:extend(
     {
         type = "item",
         name = "straw",
-        icon = "__factorio-agriculture__/graphics/icons/straw.png",
+        icon = "__factorio-agriculture__/graphics/item/straw.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[straw]",
@@ -72,7 +72,7 @@ data:extend(
     {
         type = "item",
         name = "wheat",
-        icon = "__factorio-agriculture__/graphics/icons/wheat.png",
+        icon = "__factorio-agriculture__/graphics/item/wheat.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[wheat]",
@@ -81,7 +81,7 @@ data:extend(
     {
         type = "item",
         name = "hay",
-        icon = "__factorio-agriculture__/graphics/icons/hay.png",
+        icon = "__factorio-agriculture__/graphics/item/hay.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[hay]",
@@ -90,7 +90,7 @@ data:extend(
     {
         type = "item",
         name = "hay-bale",
-        icon = "__factorio-agriculture__/graphics/icons/hay-bale.png",
+        icon = "__factorio-agriculture__/graphics/item/hay-bale.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[hay-bale]",
@@ -99,7 +99,7 @@ data:extend(
     {
         type = "item",
         name = "straw-bale",
-        icon = "__factorio-agriculture__/graphics/icons/straw-bale.png",
+        icon = "__factorio-agriculture__/graphics/item/straw-bale.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[straw-bale]",
@@ -108,7 +108,7 @@ data:extend(
     {
         type = "item",
         name = "lettuce-head",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[lettuce-head]",
@@ -117,7 +117,7 @@ data:extend(
     {
         type = "item",
         name = "corn",
-        icon = "__factorio-agriculture__/graphics/icons/corn.png",
+        icon = "__factorio-agriculture__/graphics/item/corn.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[corn]",
@@ -126,7 +126,7 @@ data:extend(
     {
         type = "item",
         name = "potato",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[potato]",
@@ -135,7 +135,7 @@ data:extend(
     {
         type = "item",
         name = "pineapple",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pineapple]",
@@ -144,7 +144,7 @@ data:extend(
     {
         type = "item",
         name = "tomato",
-        icon = "__factorio-agriculture__/graphics/icons/tomato.png",
+        icon = "__factorio-agriculture__/graphics/item/tomato.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[tomato]",
@@ -153,7 +153,7 @@ data:extend(
     {
         type = "item",
         name = "onion",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[onion]",
@@ -162,7 +162,7 @@ data:extend(
     {
         type = "item",
         name = "paprika",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[paprika]",
@@ -171,7 +171,7 @@ data:extend(
     {
         type = "item",
         name = "carrot",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[carrot]",
@@ -180,7 +180,7 @@ data:extend(
     {
         type = "item",
         name = "spice-mixture",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[spice-mixture]",
@@ -189,7 +189,7 @@ data:extend(
     {
         type = "item",
         name = "apple",
-        icon = "__factorio-agriculture__/graphics/icons/apple.png",
+        icon = "__factorio-agriculture__/graphics/item/apple.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[apple]",
@@ -198,7 +198,7 @@ data:extend(
     {
         type = "item",
         name = "pear",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pear]",
@@ -207,7 +207,7 @@ data:extend(
     {
         type = "item",
         name = "cherry",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[cherry]",
@@ -216,7 +216,7 @@ data:extend(
     {
         type = "item",
         name = "beef",
-        icon = "__factorio-agriculture__/graphics/icons/beef.png",
+        icon = "__factorio-agriculture__/graphics/item/beef.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[beef]",
@@ -225,7 +225,7 @@ data:extend(
     {
         type = "item",
         name = "milk-can",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[milk-can]",
@@ -234,7 +234,7 @@ data:extend(
     {
         type = "item",
         name = "chicken-meat",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[chicken-meat]",
@@ -243,7 +243,7 @@ data:extend(
     {
         type = "item",
         name = "egg",
-        icon = "__factorio-agriculture__/graphics/icons/egg.png",
+        icon = "__factorio-agriculture__/graphics/item/egg.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[egg]",
@@ -252,7 +252,7 @@ data:extend(
     {
         type = "item",
         name = "flour",
-        icon = "__factorio-agriculture__/graphics/icons/flour.png",
+        icon = "__factorio-agriculture__/graphics/item/flour.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[flour]",
@@ -261,7 +261,7 @@ data:extend(
     {
         type = "item",
         name = "sausage",
-        icon = "__factorio-agriculture__/graphics/icons/sausage.png",
+        icon = "__factorio-agriculture__/graphics/item/sausage.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[sausage]",
@@ -270,7 +270,7 @@ data:extend(
     {
         type = "item",
         name = "dough",
-        icon = "__factorio-agriculture__/graphics/icons/dough.png",
+        icon = "__factorio-agriculture__/graphics/item/dough.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[dough]",
@@ -279,7 +279,7 @@ data:extend(
     {
         type = "item",
         name = "pizza-salami",
-        icon = "__factorio-agriculture__/graphics/icons/pizza-salami.png",
+        icon = "__factorio-agriculture__/graphics/item/pizza-salami.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pizza-salami]",
@@ -288,7 +288,7 @@ data:extend(
     {
         type = "item",
         name = "pizza-hawaii",
-        icon = "__factorio-agriculture__/graphics/icons/pizza-hawaii.png",
+        icon = "__factorio-agriculture__/graphics/item/pizza-hawaii.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pizza-hawaii]",
@@ -297,7 +297,7 @@ data:extend(
     {
         type = "item",
         name = "pizza-margarita",
-        icon = "__factorio-agriculture__/graphics/icons/pizza-margarita.png",
+        icon = "__factorio-agriculture__/graphics/item/pizza-margarita.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pizza-margarita]",
@@ -306,7 +306,7 @@ data:extend(
     {
         type = "item",
         name = "pizza-tonno",
-        icon = "__factorio-agriculture__/graphics/icons/pizza-tonno.png",
+        icon = "__factorio-agriculture__/graphics/item/pizza-tonno.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[pizza-tonno]",
@@ -315,7 +315,7 @@ data:extend(
     {
         type = "item",
         name = "cake-cherry-pie",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[cake-cherry-pie]",
@@ -324,7 +324,7 @@ data:extend(
     {
         type = "item",
         name = "cake-apple-pie",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[cake-apple-pie]",
@@ -333,7 +333,7 @@ data:extend(
     {
         type = "item",
         name = "baked-potato",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[baked-potato]",
@@ -342,7 +342,7 @@ data:extend(
     {
         type = "item",
         name = "goulash",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[goulash]",
@@ -351,7 +351,7 @@ data:extend(
     {
         type = "item",
         name = "bread",
-        icon = "__factorio-agriculture__/graphics/icons/bread.png",
+        icon = "__factorio-agriculture__/graphics/item/bread.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[bread]",
@@ -360,7 +360,7 @@ data:extend(
     {
         type = "item",
         name = "salad",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[salad]",
@@ -369,7 +369,7 @@ data:extend(
     {
         type = "item",
         name = "chicken-korma",
-        icon = "__factorio-agriculture__/graphics/icons/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[chicken-korma]",
@@ -378,7 +378,7 @@ data:extend(
     {
         type = "item",
         name = "cheese",
-        icon = "__factorio-agriculture__/graphics/icons/cheese.png",
+        icon = "__factorio-agriculture__/graphics/item/cheese.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[cheese]",
