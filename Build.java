@@ -1,12 +1,15 @@
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -41,8 +44,17 @@ public class Build {
             cleanupModFolder();
             renameAndZipMod();
 
+
             if (arguments.contains("-localdeploy")) {
                 localDeploy();
+            }
+
+            if (arguments.contains("-launch")) {
+                if (Desktop.isDesktopSupported()) {
+                    Desktop.getDesktop().browse(new URI("steam://run/427520/"));
+                    // Wait for OS to take over and detach
+                    Thread.sleep(5000);
+                }
             }
 
             println(CONSOLE_SEP, ASCII_LOGO, CONSOLE_SEP,
@@ -60,6 +72,7 @@ public class Build {
         println("\t".repeat(tabs) + "⚠ " + message);
         warningCount++;
     }
+
     private static void warn(String message) {
         warn(message, 0);
     }
