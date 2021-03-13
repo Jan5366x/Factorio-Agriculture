@@ -9,6 +9,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+
 /**
  * Build Factorio Agriculture Mod - Zip File
  * java single file execution - java 15
@@ -62,8 +63,9 @@ public class Build {
         println(CONSOLE_SEP, "Local Deployment - " + os.toUpperCase(), CONSOLE_SEP);
         println("Local deploy target: " + targetDir.getAbsolutePath());
 
-        if (!targetDir.isDirectory())
-            throw new Exception("Target dir is not a directory! (" + targetDir.getAbsolutePath() +  ")");
+        if (!targetDir.isDirectory()) {
+            throw new Exception("Target dir is not a directory! (" + targetDir.getAbsolutePath() + ")");
+        }
 
         var zipFileName = getModZipName() + ".zip";
         var zip = new File(BUILD_DIR + File.separator + zipFileName);
@@ -79,6 +81,8 @@ public class Build {
         Set<String> protoTypeNames = new HashSet<>();
         loadPrototypeNames(protoTypeNames, "item", "item-name");
         loadPrototypeNames(protoTypeNames, "entities", "entity-name");
+        loadPrototypeNames(protoTypeNames, "recipe", "recipe-name");
+        loadPrototypeNames(protoTypeNames, "technology", "technology-name");
 
         boolean hasDelta = false;
 
@@ -89,20 +93,24 @@ public class Build {
             HashSet<String> missingInLanguage = new HashSet<>(protoTypeNames);
             missingInLanguage.removeAll(languageNames);
             if (!missingInLanguage.isEmpty()) {
+                List<String> missingInLanguageSorted = new ArrayList<>(missingInLanguage);
+                missingInLanguageSorted.sort(Comparator.naturalOrder());
                 hasDelta = true;
-                println("Missing in language file: ");
-                for (String s : missingInLanguage) {
-                    println(s);
+                println("\tMissing in language file: ");
+                for (String s : missingInLanguageSorted) {
+                    println("\t\t" + s);
                 }
             }
 
             HashSet<String> missingInPrototypes = new HashSet<>(languageNames);
             missingInPrototypes.removeAll(protoTypeNames);
             if (!missingInPrototypes.isEmpty()) {
+                List<String> missingInPrototypesSorted = new ArrayList<>(missingInPrototypes);
+                missingInPrototypesSorted.sort(Comparator.naturalOrder());
                 hasDelta = true;
-                println("Missing in prototypes file: ");
-                for (String s : missingInPrototypes) {
-                    println(s);
+                println("\tMissing in prototypes file: ");
+                for (String s : missingInPrototypesSorted) {
+                    println("\t\t" + s);
                 }
             }
         }
@@ -324,6 +332,7 @@ public class Build {
             }
         }
     }
+
     public static boolean isWindows() {
         return os.contains("win");
     }
