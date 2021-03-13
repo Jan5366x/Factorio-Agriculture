@@ -169,22 +169,19 @@ public class Build {
     private static void verifyGraphics() throws IOException {
         println(CONSOLE_SEP, "Verify Graphics...", CONSOLE_SEP);
 
-        var iconNames = new ArrayList<String>();
+        var graphicsNames = new ArrayList<String>();
 
-        // TODO just load all lua files in prototypes folder
-        loadIconNames(iconNames, "item");
-        loadIconNames(iconNames, "item-groups");
-        loadIconNames(iconNames, "technology");
-        loadIconNames(iconNames, "recipe");
-        loadIconNames(iconNames, "recipe-category");
-        loadIconNames(iconNames, "entities");
-        loadIconNames(iconNames, "fluid");
+        loadGraphicsNames(graphicsNames, "item");
+        loadGraphicsNames(graphicsNames, "item-groups");
+        loadGraphicsNames(graphicsNames, "technology");
+        loadGraphicsNames(graphicsNames, "recipe");
+        loadGraphicsNames(graphicsNames, "recipe-category");
+        loadGraphicsNames(graphicsNames, "entities");
+        loadGraphicsNames(graphicsNames, "fluid");
 
-        if (!iconNames.isEmpty()) {
-            println("Placeholder icon still used for:");
-            for (var iconName : iconNames) {
-                warn(iconName);
-            }
+        if (!graphicsNames.isEmpty()) {
+            println("Problems found for:");
+            graphicsNames.forEach(Build::warn);
         }
 
         // TODO: Check referenced files actually exist
@@ -219,7 +216,7 @@ public class Build {
         return languageEntries;
     }
 
-    private static void loadIconNames(List<String> iconNames, String filename) throws IOException {
+    private static void loadGraphicsNames(List<String> iconNames, String filename) throws IOException {
         var prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
         var name = "";
         var lineIdx = 0;
@@ -228,11 +225,11 @@ public class Build {
             String trimmed = prototype.trim();
             if (trimmed.startsWith("name = \"")) {
                 name = trimmed.substring(8, trimmed.length() - 2);
-            } else if (/* trimmed.startsWith("icon = \"") || */ trimmed.contains(".png")) { // TODO handle non icon graphics files properly
+            } else if (trimmed.endsWith(".png\",")) {
                 if (trimmed.endsWith("placeholder.png\",")) {
-                    iconNames.add(name + " (placeholder usage at " + filename + ".lua:" + lineIdx + "");
+                    iconNames.add(name + " (placeholder usage at " + filename + ".lua:" + lineIdx + ")");
                 } else if (trimmed.contains("__base__")) {
-                    iconNames.add(name + " (base game icon usage at " + filename + ".lua:" + lineIdx + ")");
+                    iconNames.add(name + " (base game graphics usage at " + filename + ".lua:" + lineIdx + ")");
                 }
             }
         }
