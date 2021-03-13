@@ -20,7 +20,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.2.5";
+    private final static String BUILD_SCRIPT_VERSION = "1.2.7";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -155,7 +155,6 @@ public class Build {
                 }
             }
 
-
             if (!missingInPrototypes.isEmpty()) {
                 List<String> missingInPrototypesSorted = new ArrayList<>(missingInPrototypes);
                 missingInPrototypesSorted.sort(Comparator.naturalOrder());
@@ -170,9 +169,16 @@ public class Build {
     private static void verifyGraphics() throws IOException {
         println(CONSOLE_SEP, "Verify Graphics...", CONSOLE_SEP);
 
-        List<String> iconNames = new ArrayList<>();
+        var iconNames = new ArrayList<String>();
+
+        // TODO just load all lua files in prototypes folder
         loadIconNames(iconNames, "item");
+        loadIconNames(iconNames, "item-groups");
         loadIconNames(iconNames, "technology");
+        loadIconNames(iconNames, "recipe");
+        loadIconNames(iconNames, "recipe-category");
+        loadIconNames(iconNames, "entities");
+        loadIconNames(iconNames, "fluid");
 
         if (!iconNames.isEmpty()) {
             println("Placeholder icon still used for:");
@@ -214,17 +220,19 @@ public class Build {
     }
 
     private static void loadIconNames(List<String> iconNames, String filename) throws IOException {
-        List<String> prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
-        String name = "";
-        int lineIdx = 0;
+        var prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
+        var name = "";
+        var lineIdx = 0;
         for (String prototype : prototypes) {
             lineIdx++;
             String trimmed = prototype.trim();
             if (trimmed.startsWith("name = \"")) {
                 name = trimmed.substring(8, trimmed.length() - 2);
-            } else if (trimmed.startsWith("icon = \"")) {
+            } else if (/* trimmed.startsWith("icon = \"") || */ trimmed.contains(".png")) { // TODO handle non icon graphics files properly
                 if (trimmed.endsWith("placeholder.png\",")) {
-                    iconNames.add(name + " (" + filename + ".lua:" + lineIdx + ")");
+                    iconNames.add(name + " (placeholder usage at " + filename + ".lua:" + lineIdx + "");
+                } else if (trimmed.contains("__base__")) {
+                    iconNames.add(name + " (base game icon usage at " + filename + ".lua:" + lineIdx + ")");
                 }
             }
         }
@@ -232,7 +240,7 @@ public class Build {
 
     private static void loadPrototypeNames(Set<String> protoTypeNames, String filename, String prefix)
             throws IOException {
-        List<String> prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
+        var prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
         for (String prototype : prototypes) {
             String trimmed = prototype.trim();
             if (trimmed.startsWith("name = \"")) {
@@ -255,7 +263,6 @@ public class Build {
         if (!directory.getAbsolutePath().contains(expectedDirStructure)) {
             throw new IOException("Build dir don't met the expected folder structure!");
         }
-
 
         if (directory.exists()) {
             println("Build dir detected!\n-> Content will be purged!");
