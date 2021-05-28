@@ -32,4 +32,10 @@ data:extend(
         group = "agriculture-product",
         order = "a",
     },
+    {
+        type = "item-subgroup",
+        name = "milling",
+        group = "agriculture-product",
+        order = "a",
+    }
 })

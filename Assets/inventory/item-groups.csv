@@ -1,1 +1,7 @@
-NAME,ICON
+NAME,TYPE,ICON
+agriculture-product,item-group,
+small-animal-growing,item-subgroup,
+large-animal-growing,item-subgroup,
+plant-growing,item-subgroup,
+tree-growing,item-subgroup,
+milling,item-subgroup,
