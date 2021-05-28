@@ -13,7 +13,7 @@ data:extend(
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "small-animal-farm"},
         max_health = 300,
-        corpse = "farm-placeholder-remnants",
+        corpse = "assembling-machine-1-remnants",
         dying_explosion = "assembling-machine-1-explosion",
         resistances =
         {
@@ -25,45 +25,51 @@ data:extend(
         collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
         selection_box = {{-2, -2}, {2, 2}},
         damaged_trigger_effect = hit_effects.entity(),
-        pictures =
+        animation =
         {
             layers =
             {
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
-                    priority = "high",
+                    priority="high",
                     width = 128,
                     height = 150,
-                    direction_count = 4,
-                    shift = util.by_pixel(0, 1-32),
+                    frame_count = 1,
+                    line_length = 1,
+                    shift = util.by_pixel(0, -16),
                     hr_version =
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
-                        priority = "high",
+                        priority="high",
                         width = 256,
                         height = 300,
-                        direction_count = 4,
-                        shift = util.by_pixel(0, 1-32),
+                        frame_count = 1,
+                        line_length = 1,
+                        shift = util.by_pixel(0, -16),
                         scale = 0.5
                     }
                 },
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
-                    priority = "high",
+                    priority="high",
                     width = 150,
                     height = 150,
-                    direction_count = 4,
-                    shift = util.by_pixel(62, 42-32),
+                    frame_count = 1,
+                    line_length = 1,
+                    repeat_count = 1,
                     draw_as_shadow = true,
+                    shift = util.by_pixel(16, 16),
                     hr_version =
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
-                        priority = "high",
+                        priority="high",
                         width = 300,
                         height = 300,
-                        direction_count = 4,
-                        shift = util.by_pixel(62, 42-32),
+                        frame_count = 1,
+                        line_length = 1,
+                        repeat_count = 1,
                         draw_as_shadow = true,
+                        shift = util.by_pixel(16, 16),
                         scale = 0.5
                     }
                 }
