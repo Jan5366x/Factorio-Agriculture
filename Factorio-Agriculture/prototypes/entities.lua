@@ -1,4 +1,5 @@
 require ("util")
+require ("__base__/prototypes/entity/pipecovers")
 
 local hit_effects = require("__base__/prototypes/entity/hit-effects")
 local sounds      = require("__base__/prototypes/entity/sounds")
@@ -21,6 +22,19 @@ data:extend(
                 type = "fire",
                 percent = 70
             }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                base_area = 10,
+                base_level = -1,
+                pipe_connections = {{ type="input", position = {0, -2} }},
+                secondary_draw_orders = { north = -1 }
+            },
+            off_when_no_fluid_recipe = false
         },
         collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
         selection_box = {{-2, -2}, {2, 2}},
@@ -214,6 +228,19 @@ data:extend(
                 type = "fire",
                 percent = 70
             }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                base_area = 10,
+                base_level = -1,
+                pipe_connections = {{ type="input", position = {0, -2} }},
+                secondary_draw_orders = { north = -1 }
+            },
+            off_when_no_fluid_recipe = false
         },
         collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
         selection_box = {{-2, -2}, {2, 2}},
@@ -409,6 +436,19 @@ data:extend(
                 percent = 70
             }
         },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                base_area = 10,
+                base_level = -1,
+                pipe_connections = {{ type="input", position = {0, -2} }},
+                secondary_draw_orders = { north = -1 }
+            },
+            off_when_no_fluid_recipe = false
+        },
         collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
         selection_box = {{-2, -2}, {2, 2}},
         damaged_trigger_effect = hit_effects.entity(),
@@ -602,6 +642,19 @@ data:extend(
                 type = "fire",
                 percent = 70
             }
+        },
+        fluid_boxes =
+        {
+            {
+                production_type = "input",
+                pipe_picture = assembler2pipepictures(),
+                pipe_covers = pipecoverspictures(),
+                base_area = 10,
+                base_level = -1,
+                pipe_connections = {{ type="input", position = {0, -2} }},
+                secondary_draw_orders = { north = -1 }
+            },
+            off_when_no_fluid_recipe = false
         },
         collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
         selection_box = {{-2, -2}, {2, 2}},
