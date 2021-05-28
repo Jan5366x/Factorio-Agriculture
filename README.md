@@ -73,6 +73,8 @@ Anything is subject to change!
   - Assembling machine: iron-plate, wood
 - Plant farm
   - Assembling machine: iron-plate, copper-plate
+- Plant farm field
+  - Assembling machine: stone
 - Tree farm
   - Assembling machine: iron-plate, copper-plate
 - Mill

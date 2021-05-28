@@ -139,6 +139,7 @@ data:extend(
         icon_size = 64, icon_mipmaps = 4,
         enabled = true,
         subgroup = "large-animal-growing",
+        category = "large-animal-growing",
         ingredients =
         {
             {"hay-bale", 2},
@@ -163,6 +164,7 @@ data:extend(
         icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         enabled = true,
+        category = "small-animal-growing",
         subgroup = "small-animal-growing",
         ingredients =
         {

@@ -75,7 +75,7 @@ data:extend(
                 }
             }
         },
-        crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
+        crafting_categories = {"small-animal-growing"},
         crafting_speed = 0.5,
         energy_source =
         {
@@ -172,7 +172,7 @@ data:extend(
                 }
             }
         },
-        crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
+        crafting_categories = {"large-animal-growing"},
         crafting_speed = 0.5,
         energy_source =
         {
@@ -269,7 +269,7 @@ data:extend(
                 }
             }
         },
-        crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
+        crafting_categories = {"plant-growing"},
         crafting_speed = 0.5,
         energy_source =
         {
@@ -366,7 +366,7 @@ data:extend(
                 }
             }
         },
-        crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
+        crafting_categories = {"tree-growing"},
         crafting_speed = 0.5,
         energy_source =
         {
@@ -463,7 +463,7 @@ data:extend(
                 }
             }
         },
-        crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
+        crafting_categories = {"milling"},
         crafting_speed = 0.5,
         energy_source =
         {
