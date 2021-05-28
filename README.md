@@ -5,6 +5,11 @@ Mod is in early work in progress phase!
 
 Anything is subject to change!
 
+# Outdated Content List
+*Check csv files under Assets/inventory for the actual content*
+
+(doc cleanup is comming soonTM)
+
 ## Buildings
 - Small animal farm
 - Large animal farm
