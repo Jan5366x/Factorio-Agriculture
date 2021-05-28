@@ -86,6 +86,17 @@ data:extend(
     },
     {
         type = "recipe",
+        name = "plant-farm-field",
+        enabled = true,
+        ingredients =
+        {
+            {"stone", 3},
+        },
+        energy_required = 15,
+        result = "plant-farm-field"
+    },
+    {
+        type = "recipe",
         name = "tree-farm",
         enabled = true,
         ingredients =

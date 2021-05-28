@@ -32,6 +32,16 @@ data:extend(
     },
     {
         type = "item",
+        name = "plant-farm-field",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        subgroup = "production-machine",
+        order = "b[plant-farm]",
+        place_result = "plant-farm-field",
+        stack_size = 50
+    },
+    {
+        type = "item",
         name = "tree-farm",
         icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
