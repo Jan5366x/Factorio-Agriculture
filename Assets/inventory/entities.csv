@@ -1,7 +1,10 @@
 NAME,ICON,PLACEHOLDER_GRAPHICS,FINAL_GRAPHICS
 small-animal-farm,,X,
+small-animal-farm-field,,,
 large-animal-farm,,X,
+large-animal-farm-field,,,
 plant-farm,,X,
 plant-farm-field,,X,
 tree-farm,,X,
+tree-farm-field,,,
 mill,,,
