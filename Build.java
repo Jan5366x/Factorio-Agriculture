@@ -12,6 +12,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -20,10 +21,11 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.2.7";
+    private final static String BUILD_SCRIPT_VERSION = "1.3.0";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
+    private final static String ASSET_INVENTORY_DIR = "Assets\\inventory";
 
     private final static List<String> filesToCleanup = List.of(".keep", "thumbs.db", "desktop.ini");
 
@@ -41,11 +43,11 @@ public class Build {
             listArguments(arguments);
             verifyTranslation();
             verifyGraphics();
+            verifyAssetInventory();
             prepareModBuildFolder();
             copyModFiles();
             cleanupModFolder();
             renameAndZipMod();
-
 
             if (arguments.contains("-localdeploy")) {
                 localDeploy();
@@ -187,6 +189,44 @@ public class Build {
         // TODO: Check referenced files actually exist
     }
 
+    private static void verifyAssetInventory() throws IOException {
+        println(CONSOLE_SEP, "Verify Asset Inventory...", CONSOLE_SEP);
+        verifyAssetInventory("item");
+        verifyAssetInventory( "item-groups");
+        verifyAssetInventory( "technology");
+        verifyAssetInventory("recipe");
+        verifyAssetInventory("recipe-category");
+        verifyAssetInventory("entities");
+        verifyAssetInventory( "fluid");
+        verifyAssetInventory( "technology");
+    }
+
+    private static void verifyAssetInventory(String filename) throws IOException {
+        var inventoryNames = new ArrayList<String>();
+
+        // load csv lines, just use first column and ignore the title "name"
+        try (Stream<String> stream = Files.lines(Path.of(ASSET_INVENTORY_DIR, filename + ".csv"))) {
+            stream.forEach(s -> {
+                var name = s.split(",")[0];
+                if (!name.equalsIgnoreCase("name")) {
+                    inventoryNames.add(name);
+                }
+            });
+        }
+
+        var prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
+
+        for (var prototype : prototypes) {
+            var trimmed = prototype.trim();
+            if (trimmed.startsWith("name = \"")) {
+                var name = trimmed.substring(8, trimmed.endsWith(",") ? trimmed.length() - 2 : trimmed.length() - 1);
+                inventoryNames.remove(name);
+            }
+        }
+
+        inventoryNames.forEach(s -> warn(filename + " " + s + " is missing!"));
+    }
+
     private static Set<String> loadLanguageFile(String language) throws IOException {
         Set<String> languageEntries = new HashSet<>();
         List<String> prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "locale", language, "main.cfg"));
@@ -224,7 +264,7 @@ public class Build {
             lineIdx++;
             String trimmed = prototype.trim();
             if (trimmed.startsWith("name = \"")) {
-                name = trimmed.substring(8, trimmed.length() - 2);
+                name = trimmed.substring(8, trimmed.endsWith(",") ? trimmed.length() - 2 : trimmed.length() - 1);
             } else if (trimmed.endsWith(".png\",")) {
                 if (trimmed.endsWith("placeholder.png\",")) {
                     iconNames.add(name + " (placeholder usage at " + filename + ".lua:" + lineIdx + ")");
@@ -241,7 +281,7 @@ public class Build {
         for (String prototype : prototypes) {
             String trimmed = prototype.trim();
             if (trimmed.startsWith("name = \"")) {
-                String itemName = trimmed.substring(8, trimmed.length() - 2);
+                String itemName = trimmed.substring(8, trimmed.endsWith(",") ? trimmed.length() - 2 : trimmed.length() - 1);
                 protoTypeNames.add(prefix + "." + itemName);
             }
         }
