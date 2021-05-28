@@ -13,7 +13,7 @@ data:extend(
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
         minable = {mining_time = 0.2, result = "small-animal-farm"},
         max_health = 300,
-        corpse = "assembling-machine-1-remnants",
+        corpse = "farm-placeholder-remnants",
         dying_explosion = "assembling-machine-1-explosion",
         resistances =
         {
@@ -22,54 +22,48 @@ data:extend(
                 percent = 70
             }
         },
-        collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
+        selection_box = {{-2, -2}, {2, 2}},
         damaged_trigger_effect = hit_effects.entity(),
-        animation =
+        pictures =
         {
             layers =
             {
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
-                    priority="high",
-                    width = 108,
-                    height = 114,
-                    frame_count = 32,
-                    line_length = 8,
-                    shift = util.by_pixel(0, 2),
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
+                    priority = "high",
+                    width = 128,
+                    height = 150,
+                    direction_count = 4,
+                    shift = util.by_pixel(0, 1-32),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1.png",
-                        priority="high",
-                        width = 214,
-                        height = 226,
-                        frame_count = 32,
-                        line_length = 8,
-                        shift = util.by_pixel(0, 2),
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
+                        priority = "high",
+                        width = 256,
+                        height = 300,
+                        direction_count = 4,
+                        shift = util.by_pixel(0, 1-32),
                         scale = 0.5
                     }
                 },
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1-shadow.png",
-                    priority="high",
-                    width = 95,
-                    height = 83,
-                    frame_count = 1,
-                    line_length = 1,
-                    repeat_count = 32,
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
+                    priority = "high",
+                    width = 150,
+                    height = 150,
+                    direction_count = 4,
+                    shift = util.by_pixel(62, 42-32),
                     draw_as_shadow = true,
-                    shift = util.by_pixel(8.5, 5.5),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1-shadow.png",
-                        priority="high",
-                        width = 190,
-                        height = 165,
-                        frame_count = 1,
-                        line_length = 1,
-                        repeat_count = 32,
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
+                        priority = "high",
+                        width = 300,
+                        height = 300,
+                        direction_count = 4,
+                        shift = util.by_pixel(62, 42-32),
                         draw_as_shadow = true,
-                        shift = util.by_pixel(8.5, 5),
                         scale = 0.5
                     }
                 }
