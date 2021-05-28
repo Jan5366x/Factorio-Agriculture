@@ -603,6 +603,7 @@ data:extend(
                 percent = 70
             }
         },
+        collision_mask = {"object-layer"},
         collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
         selection_box = {{-2, -2}, {2, 2}},
         damaged_trigger_effect = hit_effects.entity(),
