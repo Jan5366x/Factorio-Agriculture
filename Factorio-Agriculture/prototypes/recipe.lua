@@ -218,6 +218,48 @@ data:extend(
     },
     {
         type = "recipe",
+        name = "straw",
+        icon = "__factorio-agriculture__/graphics/item/straw.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "straw",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "hay",
+        icon = "__factorio-agriculture__/graphics/item/hay.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "hay",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
         name = "hay-bale",
         enabled = true,
         ingredients =
@@ -259,6 +301,258 @@ data:extend(
         },
         energy_required = 15,
         result = "dough"
+    },
+    {
+        type = "recipe",
+        name = "lettuce-head",
+        icon = "__factorio-agriculture__/graphics/item/lettuce-head.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "lettuce-head",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "corn",
+        icon = "__factorio-agriculture__/graphics/item/corn.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "corn",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "potato",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "potato",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "pineapple",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "pineapple",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "tomato",
+        icon = "__factorio-agriculture__/graphics/item/tomato.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "tomato",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "onion",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "onion",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "paprika",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "paprika",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "carrot",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "carrot",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "spice-mixture",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "plant-growing",
+        subgroup = "plant-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "spice-mixture",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "apple",
+        icon = "__factorio-agriculture__/graphics/item/apple.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "tree-growing",
+        subgroup = "tree-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "apple",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "pear",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "tree-growing",
+        subgroup = "tree-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "pear",
+                amount = 1
+            }
+        }
+    },
+    {
+        type = "recipe",
+        name = "cherry",
+        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon_size = 64, icon_mipmaps = 4,
+        enabled = true,
+        category = "tree-growing",
+        subgroup = "tree-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "cherry",
+                amount = 1
+            }
+        }
     },
     {
         type = "recipe",
