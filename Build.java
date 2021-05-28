@@ -21,11 +21,12 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.3.0";
+    private final static String BUILD_SCRIPT_VERSION = "1.3.1";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
-    private final static String ASSET_INVENTORY_DIR = "Assets\\inventory";
+    private final static Path ASSET_DIR = Paths.get("Assets");
+    private final static Path ASSET_INVENTORY_DIR = ASSET_DIR.resolve("inventory");
 
     private final static List<String> filesToCleanup = List.of(".keep", "thumbs.db", "desktop.ini");
 
@@ -192,22 +193,24 @@ public class Build {
     private static void verifyAssetInventory() throws IOException {
         println(CONSOLE_SEP, "Verify Asset Inventory...", CONSOLE_SEP);
         verifyAssetInventory("item");
-        verifyAssetInventory( "item-groups");
-        verifyAssetInventory( "technology");
+        verifyAssetInventory("item-groups");
+        verifyAssetInventory("technology");
         verifyAssetInventory("recipe");
         verifyAssetInventory("recipe-category");
         verifyAssetInventory("entities");
-        verifyAssetInventory( "fluid");
-        verifyAssetInventory( "technology");
+        verifyAssetInventory("fluid");
+        verifyAssetInventory("technology");
     }
 
     private static void verifyAssetInventory(String filename) throws IOException {
         var inventoryNames = new ArrayList<String>();
 
         // load csv lines, just use first column and ignore the title "name"
-        try (Stream<String> stream = Files.lines(Path.of(ASSET_INVENTORY_DIR, filename + ".csv"))) {
+        try (Stream<String> stream = Files.lines(ASSET_INVENTORY_DIR.resolve(filename + ".csv"))) {
             stream.forEach(s -> {
-                if (s.trim().isEmpty()) return;
+                if (s.trim().isEmpty()) {
+                    return;
+                }
                 var name = s.split(",")[0];
                 if (!name.equalsIgnoreCase("name")) {
                     inventoryNames.add(name);
@@ -282,7 +285,8 @@ public class Build {
         for (String prototype : prototypes) {
             String trimmed = prototype.trim();
             if (trimmed.startsWith("name = \"")) {
-                String itemName = trimmed.substring(8, trimmed.endsWith(",") ? trimmed.length() - 2 : trimmed.length() - 1);
+                String itemName =
+                        trimmed.substring(8, trimmed.endsWith(",") ? trimmed.length() - 2 : trimmed.length() - 1);
                 protoTypeNames.add(prefix + "." + itemName);
             }
         }
