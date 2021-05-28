@@ -118,8 +118,8 @@ data:extend(
                 percent = 70
             }
         },
-        collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
+        selection_box = {{-2, -2}, {2, 2}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -127,46 +127,46 @@ data:extend(
             layers =
             {
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 108,
-                    height = 114,
-                    frame_count = 32,
-                    line_length = 8,
-                    shift = util.by_pixel(0, 2),
+                    width = 128,
+                    height = 150,
+                    frame_count = 1,
+                    line_length = 1,
+                    shift = util.by_pixel(0, -16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 214,
-                        height = 226,
-                        frame_count = 32,
-                        line_length = 8,
-                        shift = util.by_pixel(0, 2),
+                        width = 256,
+                        height = 300,
+                        frame_count = 1,
+                        line_length = 1,
+                        shift = util.by_pixel(0, -16),
                         scale = 0.5
                     }
                 },
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1-shadow.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 95,
-                    height = 83,
+                    width = 150,
+                    height = 150,
                     frame_count = 1,
                     line_length = 1,
-                    repeat_count = 32,
+                    repeat_count = 1,
                     draw_as_shadow = true,
-                    shift = util.by_pixel(8.5, 5.5),
+                    shift = util.by_pixel(16, 16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1-shadow.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 190,
-                        height = 165,
+                        width = 300,
+                        height = 300,
                         frame_count = 1,
                         line_length = 1,
-                        repeat_count = 32,
+                        repeat_count = 1,
                         draw_as_shadow = true,
-                        shift = util.by_pixel(8.5, 5),
+                        shift = util.by_pixel(16, 16),
                         scale = 0.5
                     }
                 }
@@ -215,8 +215,8 @@ data:extend(
                 percent = 70
             }
         },
-        collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
+        selection_box = {{-2, -2}, {2, 2}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -224,46 +224,46 @@ data:extend(
             layers =
             {
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 108,
-                    height = 114,
-                    frame_count = 32,
-                    line_length = 8,
-                    shift = util.by_pixel(0, 2),
+                    width = 128,
+                    height = 150,
+                    frame_count = 1,
+                    line_length = 1,
+                    shift = util.by_pixel(0, -16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 214,
-                        height = 226,
-                        frame_count = 32,
-                        line_length = 8,
-                        shift = util.by_pixel(0, 2),
+                        width = 256,
+                        height = 300,
+                        frame_count = 1,
+                        line_length = 1,
+                        shift = util.by_pixel(0, -16),
                         scale = 0.5
                     }
                 },
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1-shadow.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 95,
-                    height = 83,
+                    width = 150,
+                    height = 150,
                     frame_count = 1,
                     line_length = 1,
-                    repeat_count = 32,
+                    repeat_count = 1,
                     draw_as_shadow = true,
-                    shift = util.by_pixel(8.5, 5.5),
+                    shift = util.by_pixel(16, 16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1-shadow.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 190,
-                        height = 165,
+                        width = 300,
+                        height = 300,
                         frame_count = 1,
                         line_length = 1,
-                        repeat_count = 32,
+                        repeat_count = 1,
                         draw_as_shadow = true,
-                        shift = util.by_pixel(8.5, 5),
+                        shift = util.by_pixel(16, 16),
                         scale = 0.5
                     }
                 }
@@ -312,8 +312,8 @@ data:extend(
                 percent = 70
             }
         },
-        collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
+        selection_box = {{-2, -2}, {2, 2}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -321,46 +321,46 @@ data:extend(
             layers =
             {
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 108,
-                    height = 114,
-                    frame_count = 32,
-                    line_length = 8,
-                    shift = util.by_pixel(0, 2),
+                    width = 128,
+                    height = 150,
+                    frame_count = 1,
+                    line_length = 1,
+                    shift = util.by_pixel(0, -16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 214,
-                        height = 226,
-                        frame_count = 32,
-                        line_length = 8,
-                        shift = util.by_pixel(0, 2),
+                        width = 256,
+                        height = 300,
+                        frame_count = 1,
+                        line_length = 1,
+                        shift = util.by_pixel(0, -16),
                         scale = 0.5
                     }
                 },
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1-shadow.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 95,
-                    height = 83,
+                    width = 150,
+                    height = 150,
                     frame_count = 1,
                     line_length = 1,
-                    repeat_count = 32,
+                    repeat_count = 1,
                     draw_as_shadow = true,
-                    shift = util.by_pixel(8.5, 5.5),
+                    shift = util.by_pixel(16, 16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1-shadow.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 190,
-                        height = 165,
+                        width = 300,
+                        height = 300,
                         frame_count = 1,
                         line_length = 1,
-                        repeat_count = 32,
+                        repeat_count = 1,
                         draw_as_shadow = true,
-                        shift = util.by_pixel(8.5, 5),
+                        shift = util.by_pixel(16, 16),
                         scale = 0.5
                     }
                 }
@@ -409,8 +409,8 @@ data:extend(
                 percent = 70
             }
         },
-        collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
+        selection_box = {{-2, -2}, {2, 2}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -418,46 +418,46 @@ data:extend(
             layers =
             {
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 108,
-                    height = 114,
-                    frame_count = 32,
-                    line_length = 8,
-                    shift = util.by_pixel(0, 2),
+                    width = 128,
+                    height = 150,
+                    frame_count = 1,
+                    line_length = 1,
+                    shift = util.by_pixel(0, -16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 214,
-                        height = 226,
-                        frame_count = 32,
-                        line_length = 8,
-                        shift = util.by_pixel(0, 2),
+                        width = 256,
+                        height = 300,
+                        frame_count = 1,
+                        line_length = 1,
+                        shift = util.by_pixel(0, -16),
                         scale = 0.5
                     }
                 },
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1-shadow.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 95,
-                    height = 83,
+                    width = 150,
+                    height = 150,
                     frame_count = 1,
                     line_length = 1,
-                    repeat_count = 32,
+                    repeat_count = 1,
                     draw_as_shadow = true,
-                    shift = util.by_pixel(8.5, 5.5),
+                    shift = util.by_pixel(16, 16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1-shadow.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 190,
-                        height = 165,
+                        width = 300,
+                        height = 300,
                         frame_count = 1,
                         line_length = 1,
-                        repeat_count = 32,
+                        repeat_count = 1,
                         draw_as_shadow = true,
-                        shift = util.by_pixel(8.5, 5),
+                        shift = util.by_pixel(16, 16),
                         scale = 0.5
                     }
                 }
@@ -506,8 +506,8 @@ data:extend(
                 percent = 70
             }
         },
-        collision_box = {{-1.2, -1.2}, {1.2, 1.2}},
-        selection_box = {{-1.5, -1.5}, {1.5, 1.5}},
+        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
+        selection_box = {{-2, -2}, {2, 2}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -515,46 +515,46 @@ data:extend(
             layers =
             {
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 108,
-                    height = 114,
-                    frame_count = 32,
-                    line_length = 8,
-                    shift = util.by_pixel(0, 2),
+                    width = 128,
+                    height = 150,
+                    frame_count = 1,
+                    line_length = 1,
+                    shift = util.by_pixel(0, -16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 214,
-                        height = 226,
-                        frame_count = 32,
-                        line_length = 8,
-                        shift = util.by_pixel(0, 2),
+                        width = 256,
+                        height = 300,
+                        frame_count = 1,
+                        line_length = 1,
+                        shift = util.by_pixel(0, -16),
                         scale = 0.5
                     }
                 },
                 {
-                    filename = "__base__/graphics/entity/assembling-machine-1/assembling-machine-1-shadow.png",
+                    filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 95,
-                    height = 83,
+                    width = 150,
+                    height = 150,
                     frame_count = 1,
                     line_length = 1,
-                    repeat_count = 32,
+                    repeat_count = 1,
                     draw_as_shadow = true,
-                    shift = util.by_pixel(8.5, 5.5),
+                    shift = util.by_pixel(16, 16),
                     hr_version =
                     {
-                        filename = "__base__/graphics/entity/assembling-machine-1/hr-assembling-machine-1-shadow.png",
+                        filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 190,
-                        height = 165,
+                        width = 300,
+                        height = 300,
                         frame_count = 1,
                         line_length = 1,
-                        repeat_count = 32,
+                        repeat_count = 1,
                         draw_as_shadow = true,
-                        shift = util.by_pixel(8.5, 5),
+                        shift = util.by_pixel(16, 16),
                         scale = 0.5
                     }
                 }
