@@ -62,6 +62,17 @@ data:extend(
     },
     {
         type = "recipe",
+        name = "small-animal-farm-field",
+        enabled = true,
+        ingredients =
+        {
+            {"stone", 3},
+        },
+        energy_required = 15,
+        result = "small-animal-farm-field"
+    },
+    {
+        type = "recipe",
         name = "large-animal-farm",
         enabled = true,
         ingredients =
@@ -71,6 +82,17 @@ data:extend(
         },
         energy_required = 15,
         result = "large-animal-farm"
+    },
+    {
+        type = "recipe",
+        name = "large-animal-farm-field",
+        enabled = true,
+        ingredients =
+        {
+            {"stone", 3},
+        },
+        energy_required = 15,
+        result = "large-animal-farm-field"
     },
     {
         type = "recipe",
@@ -106,6 +128,17 @@ data:extend(
         },
         energy_required = 15,
         result = "tree-farm"
+    },
+    {
+        type = "recipe",
+        name = "tree-farm-field",
+        enabled = true,
+        ingredients =
+        {
+            {"stone", 3},
+        },
+        energy_required = 15,
+        result = "tree-farm-field"
     },
     {
         type = "recipe",

@@ -207,6 +207,7 @@ public class Build {
         // load csv lines, just use first column and ignore the title "name"
         try (Stream<String> stream = Files.lines(Path.of(ASSET_INVENTORY_DIR, filename + ".csv"))) {
             stream.forEach(s -> {
+                if (s.trim().isEmpty()) return;
                 var name = s.split(",")[0];
                 if (!name.equalsIgnoreCase("name")) {
                     inventoryNames.add(name);
