@@ -560,7 +560,7 @@ data:extend(
                 }
             }
         },
-        crafting_categories = {"crafting", "basic-crafting", "advanced-crafting"},
+        crafting_categories = {"milling"},
         crafting_speed = 0.5,
         energy_source =
         {

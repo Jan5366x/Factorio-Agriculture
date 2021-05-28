@@ -169,3 +169,5 @@ fabric.properties
 # custom
 build/
 
+# libre office lock files
+.~lock*#
