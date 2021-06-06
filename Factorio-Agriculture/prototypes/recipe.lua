@@ -283,6 +283,8 @@ data:extend(
     {
         type = "recipe",
         name = "flour",
+        subgroup = "milling",
+        category = "milling",
         enabled = true,
         ingredients =
         {
@@ -294,6 +296,8 @@ data:extend(
     {
         type = "recipe",
         name = "dough",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -557,6 +561,8 @@ data:extend(
     {
         type = "recipe",
         name = "pizza-salami",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -571,6 +577,8 @@ data:extend(
     {
         type = "recipe",
         name = "pizza-hawaii",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -586,6 +594,8 @@ data:extend(
     {
         type = "recipe",
         name = "pizza-margarita",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -599,6 +609,8 @@ data:extend(
     {
         type = "recipe",
         name = "pizza-tonno",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -613,6 +625,8 @@ data:extend(
     {
         type = "recipe",
         name = "cake-cherry-pie",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -627,6 +641,8 @@ data:extend(
     {
         type = "recipe",
         name = "cake-apple-pie",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -641,6 +657,8 @@ data:extend(
     {
         type = "recipe",
         name = "sausage",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -652,6 +670,8 @@ data:extend(
     {
         type = "recipe",
         name = "baked-potato",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -663,6 +683,8 @@ data:extend(
     {
         type = "recipe",
         name = "goulash",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -677,6 +699,8 @@ data:extend(
     {
         type = "recipe",
         name = "salad",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -689,6 +713,8 @@ data:extend(
     {
         type = "recipe",
         name = "chicken-korma",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -701,6 +727,8 @@ data:extend(
     {
         type = "recipe",
         name = "bread",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
@@ -712,6 +740,8 @@ data:extend(
     {
         type = "recipe",
         name = "cheese",
+        subgroup = "food-processing",
+        category = "food-processing",
         enabled = true,
         ingredients =
         {
