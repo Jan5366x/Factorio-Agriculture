@@ -1001,7 +1001,7 @@ data:extend(
                 }
             }
         },
-        crafting_categories = {"milling"},
+        crafting_categories = {"food-processing"},
         crafting_speed = 0.5,
         energy_source =
         {
