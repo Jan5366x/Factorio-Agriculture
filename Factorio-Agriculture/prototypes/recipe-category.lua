@@ -20,5 +20,9 @@ data:extend(
             type = "recipe-category",
             name = "milling"
         },
+        {
+            type = "recipe-category",
+            name = "food-processing"
+        }
     }
 )

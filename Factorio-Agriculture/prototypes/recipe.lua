@@ -719,5 +719,24 @@ data:extend(
         },
         energy_required = 15,
         result = "cheese"
+    },
+    {
+        type = "recipe",
+        name = "wood",
+        enabled = true,
+        subgroup = "tree-growing",
+        category = "tree-growing",
+        ingredients =
+        {
+            {type="fluid", name="water", amount=10},
+        },
+        energy_required = 15,
+        results =
+        {
+            {
+                name = "wood",
+                amount = 1
+            }
+        }
     }
 })
