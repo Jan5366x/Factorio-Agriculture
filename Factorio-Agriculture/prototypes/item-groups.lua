@@ -37,5 +37,11 @@ data:extend(
         name = "milling",
         group = "agriculture-product",
         order = "a",
+    },
+    {
+        type = "item-subgroup",
+        name = "food-processing",
+        group = "agriculture-product",
+        order = "a",
     }
 })
