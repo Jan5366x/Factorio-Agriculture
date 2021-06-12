@@ -41,6 +41,7 @@ public class Build {
             var arguments = Arrays.asList(args);
             println(CONSOLE_SEP, ASCII_LOGO);
 
+            parseLua();
             listArguments(arguments);
             verifyTranslation();
             verifyGraphics();
@@ -67,6 +68,10 @@ public class Build {
             e.printStackTrace(System.out);
             System.exit(1);
         }
+    }
+
+    private static void parseLua() throws Exception {
+        parseModLuaFile("item");
     }
 
     private static void warn(String message, int tabs) {
@@ -501,4 +506,30 @@ public class Build {
                                   __/ /                      Build Script Version v§BUILD_SCRIPT_VERSION§
                                  |___/
             """.replace("§BUILD_SCRIPT_VERSION§", BUILD_SCRIPT_VERSION);
+
+    private static void parseModLuaFile(String filename) throws IOException {
+        var lines = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
+
+        // TODO WIP
+        var fileRoot = new DataEntry("FILE", new ArrayList<>());
+        var workStack = new Stack<DataEntry>();
+        workStack.push(fileRoot);
+        for (int i = 0; i < lines.size(); i++) {
+            var line = lines.get(i);
+            for (int c = 0; c < line.length(); c++) {
+                var ch = line.charAt(c);
+                if (ch == '{'){
+                    var newEntry = new DataEntry("UNKNOWN", new ArrayList<>());
+                    workStack.peek().entries().add(newEntry);
+                    workStack.push(newEntry);
+                } else if (ch == '}') {
+                    workStack.pop();
+                }
+            }
+        }
+        System.out.println(fileRoot);
+    }
+
+    record DataEntry(String key, ArrayList<DataEntry> entries) {}
+
 }
