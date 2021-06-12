@@ -61,7 +61,7 @@ data:extend(
         },
         results=
         {
-            {type="fluid", name="biofuel", amount=10}
+            {type="fluid", name="biogas", amount=10}
         },
         main_product= "",
         icon = "__base__/graphics/icons/fluid/heavy-oil-cracking.png",
@@ -89,7 +89,7 @@ data:extend(
         },
         results=
         {
-            {type="fluid", name="light-oil", amount=45},
+            {type="fluid", name="petroleum-gas", amount=45},
         },
         icon = "__base__/graphics/icons/fluid/advanced-oil-processing.png",
         icon_size = 64, icon_mipmaps = 4,
