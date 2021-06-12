@@ -21,7 +21,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 15
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.3.1";
+    private final static String BUILD_SCRIPT_VERSION = "1.3.2";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -135,6 +135,7 @@ public class Build {
         loadPrototypeNames(protoTypeNames, "entities", "entity-name");
         loadPrototypeNames(protoTypeNames, "recipe", "recipe-name");
         loadPrototypeNames(protoTypeNames, "technology", "technology-name");
+        loadPrototypeNames(protoTypeNames, "fluid", "fluid-name");
 
         for (var language : Arrays.asList("de", "en")) {
             Set<String> languageNames = loadLanguageFile(language);
