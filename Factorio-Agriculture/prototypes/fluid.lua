@@ -22,7 +22,7 @@ data:extend(
         icon = "__factorio-agriculture__/graphics/item/placeholder.png",
         icon_size = 64, icon_mipmaps = 4,
         order = "a[fluid]-a[biogas]",
-        gas_temperature = 15,
+        gas_temperature = 45,
         auto_barrel = false
     }
 })

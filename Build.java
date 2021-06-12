@@ -18,10 +18,10 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * Build Factorio Agriculture Mod - Zip File
- * java single file execution - java 15
+ * java single file execution - java 16
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.3.2";
+    private final static String BUILD_SCRIPT_VERSION = "1.3.3";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -486,20 +486,19 @@ public class Build {
     }
 
     private final static String CONSOLE_SEP = "-".repeat(79);
-
-    private final static String ASCII_LOGO =
-            "     ______            _                _\n" +
-                    "    |  ____|          | |              (_)                              \n" +
-                    "    | |__  __ _   ___ | |_  ___   _ __  _   ___                         \n" +
-                    "    |  __|/ _` | / __|| __|/ _ \\ | '__|| | / _ \\                        \n" +
-                    "    | |  | (_| || (__ | |_| (_) || |   | || (_) |                       \n" +
-                    "    |_|   \\__,_| \\___| \\__|\\___/ |_|   |_| \\___/  _                     \n" +
-                    "                /\\                (_)             | || |                    \n" +
-                    "               /  \\    __ _  _ __  _   ___  _   _ | || |_  _   _  _ __  ___ \n" +
-                    "              / /\\ \\  / _` || '__|| | / __|| | | || || __|| | | || '__|/ _ \\\n" +
-                    "             / ____ \\| (_| || |   | || (__ | |_| || || |_ | |_| || |  |  __/\n" +
-                    "            /_/    \\_\\\\__, ||_|   |_| \\___| \\__,_||_| \\__| \\__,_||_|   \\___|\n" +
-                    "                       __/ |                     Build Script Version v" + BUILD_SCRIPT_VERSION +
-                    "\n" +
-                    "                      |___/";
+    private final static String ASCII_LOGO = """
+                ______            _
+               |  ____|          | |              (_)
+               | |__  __ _   ___ | |_   ___   _ __  _   ___                  
+               |  __|/ _` | / __|| __|  / _ \\ | '__|| | / _ \\                       
+               | |  | (_| || (__ | |_| | (_) || |   | || (_) |
+               |_|   \\__,_| \\___| \\__|  \\___/ |_|   |_| \\___/  _                     
+                           /\\\\                (_)             | || |                    
+                          /  \\\\    __ _  _ __  _   ___  _   _ | || |_  _   _  _ __  ___ 
+                         / /\\ \\\\  / _` || '__|| | / __|| | | || || __|| | | || '__|/ _ \\
+                        / ____ \\\\| (_| || |   | || (__ | |_| || || |_ | |_| || |  |  __/
+                       /_/    \\_\\\\\\__, ||_|   |_| \\___| \\__,_||_| \\__| \\__,_||_|   \\___|
+                                  __/ /                      Build Script Version v§BUILD_SCRIPT_VERSION§
+                                 |___/
+            """.replace("§BUILD_SCRIPT_VERSION§", BUILD_SCRIPT_VERSION);
 }
