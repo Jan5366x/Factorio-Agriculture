@@ -532,4 +532,10 @@ public class Build {
 
     record DataEntry(String key, ArrayList<DataEntry> entries) {}
 
+    enum ParseMode {
+        Syntax,
+        Name,
+        Value,
+        Array
+    }
 }
