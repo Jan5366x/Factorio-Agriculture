@@ -6,7 +6,7 @@ Mod is in early work in progress phase!
 Anything is subject to change!
 
 # Content List
-*Check csv files under Assets/inventory for the mod content*
+*Check csv files under [Assets/inventory](Assets/inventory) for the mod content*
 
 ## Recommended JetBrains IDEA Plugins
 - EmmyLua
