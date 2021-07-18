@@ -1,49 +1,49 @@
-NAME,ICON
-small-animal-farm,
-small-animal-farm-field,
-large-animal-farm,
-large-animal-farm-field,
-plant-farm,
-plant-farm-field,
-tree-farm,
-tree-farm-field,
-mill,
-kitchen,
-cow-growing,
-chicken-growing,
-hay-bale,X
-straw-bale,X
-flour,X
-dough,X
-pizza-salami,X
-pizza-hawaii,X
-pizza-margarita,X
-pizza-tonno,X
-cake-cherry-pie,
-cake-apple-pie,
-sausage,X
-baked-potato,
-goulash,
-salad,X
-chicken-korma,
-bread,X
-cheese,X
-biofuel,
-biofuel-refinement,
-biogas,
-biogas-liquefaction,
-straw,X
-hay,X
-lettuce-head,X
-corn,X
-potato,
-pineapple,
-tomato,X
-onion,
-paprika,
-carrot,
-spice-mixture,
-apple,X
-pear,
-cherry,
-wood,
+NAME,ICON,CRAFTED IN,RESOURCES
+small-animal-farm,,Assembling machine,"iron-plate, copper-plate"
+small-animal-farm-field,,Assembling machine,
+large-animal-farm,,Assembling machine,"iron-plate, wood"
+large-animal-farm-field,,Assembling machine,
+plant-farm,,Assembling machine,"iron-plate, copper-plate"
+plant-farm-field,,Assembling machine,
+tree-farm,,Assembling machine,"iron-plate, copper-plate"
+tree-farm-field,,Assembling machine,
+mill,,Assembling machine,"wood, stone-brick"
+kitchen,,Assembling machine,"iron-plate, copper-plate, stone-brick"
+cow-growing,,large-animal-farm,"Hay bale, Straw bale"
+chicken-growing,,small-animal-farm,Wheat
+hay-bale,X,Assembling machine,Hey
+straw-bale,X,Assembling machine,Straw
+flour,X,mill,Wheat
+dough,X,kitchen,"Flour, Water"
+pizza-salami,X,kitchen,"Dough, Tomato, Sausage, Cheese"
+pizza-hawaii,X,kitchen,"Dough, Tomato, Pineapple, Sausage, Cheese"
+pizza-margarita,X,kitchen,"Dough, Tomato, Cheese"
+pizza-tonno,X,kitchen,"Dough, Tomato, raw fish, Cheese"
+cake-cherry-pie,,kitchen,"Flour, Cherry, Milk Can, Eggs"
+cake-apple-pie,,kitchen,"Flour, Milk Can, Egg, Apple"
+sausage,X,kitchen,Beef
+baked-potato,,kitchen,Potatoes
+goulash,,kitchen,"Beef, Paprika, Onion, Tomato"
+salad,X,kitchen,"Lettuce head, Tomato"
+chicken-korma,,kitchen,"chicken meat,  Spice mixture"
+bread,X,kitchen,Dough
+cheese,X,kitchen,Milk Can
+biofuel,,Chemical Plant,"Corn, Water"
+biofuel-refinement,,Chemical Plant,"Water, Biofuel"
+biogas,,Chemical Plant,
+biogas-liquefaction,,Chemical Plant,
+straw,X,plant-farm,
+hay,X,plant-farm,
+lettuce-head,X,plant-farm,
+corn,X,plant-farm,
+potato,,plant-farm,
+pineapple,,plant-farm,
+tomato,X,plant-farm,
+onion,,plant-farm,
+paprika,,plant-farm,
+carrot,,plant-farm,
+spice-mixture,,plant-farm,
+apple,X,tree-farm,""
+pear,,tree-farm,
+cherry,,tree-farm,
+wood,,tree-farm,
