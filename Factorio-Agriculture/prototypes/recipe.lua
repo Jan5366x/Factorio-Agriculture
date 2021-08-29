@@ -504,7 +504,7 @@ data:extend(
     {
         type = "recipe",
         name = "carrot",
-        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/carrot.png",
         icon_size = 64, icon_mipmaps = 4,
         enabled = true,
         category = "plant-growing",
