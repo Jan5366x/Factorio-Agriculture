@@ -31,3 +31,7 @@ Example:
 ```shell
 java Build.java -localdeploy -launch 
 ```
+
+# Lua API
+
+https://lua-api.factorio.com/latest/
