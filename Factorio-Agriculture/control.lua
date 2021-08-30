@@ -17,7 +17,7 @@ function entity_built_function(event)
 end
 
 function entity_died_function(event)
-    local entity = event.created_entity
+    local entity = event.entity
     local name = entity.name
 
     messagePlayer(event.player_index, "Died! hmm whats that?" .. entity.name .. " : " .. entity.type)
