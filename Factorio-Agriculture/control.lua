@@ -4,6 +4,10 @@ script.on_load(function()
     script.on_event(defines.events.on_entity_died, entity_died_function)
 end)
 
+-- TODO use entity orientation to find connected fields & farms (only visual/logical indicator)
+-- TODO change fields & farms to 5x5
+-- TODO try SimpleEntity for fields
+
 function entity_built_function(event)
     local entity = event.created_entity
     local name = entity.name
