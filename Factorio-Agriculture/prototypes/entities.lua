@@ -36,8 +36,8 @@ data:extend(
             },
             off_when_no_fluid_recipe = false
         },
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         animation =
         {
@@ -46,8 +46,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -55,8 +55,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -66,8 +66,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -77,8 +77,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
@@ -133,8 +133,8 @@ data:extend(
             }
         },
         collision_mask = {"object-layer"},
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         animation =
         {
@@ -143,8 +143,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/farm-field-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -152,8 +152,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/hr-farm-field-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -163,8 +163,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/farm-field-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -174,8 +174,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/hr-farm-field-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
@@ -242,8 +242,8 @@ data:extend(
             },
             off_when_no_fluid_recipe = false
         },
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -253,8 +253,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -262,8 +262,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -273,8 +273,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -284,8 +284,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
@@ -340,8 +340,8 @@ data:extend(
             }
         },
         collision_mask = {"object-layer"},
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         animation =
         {
@@ -350,8 +350,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/farm-field-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -359,8 +359,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/hr-farm-field-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -370,8 +370,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/farm-field-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -381,8 +381,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/hr-farm-field-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
@@ -449,8 +449,8 @@ data:extend(
             },
             off_when_no_fluid_recipe = false
         },
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -460,8 +460,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -469,8 +469,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -480,8 +480,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -491,8 +491,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
@@ -547,8 +547,8 @@ data:extend(
             }
         },
         collision_mask = {"object-layer"},
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         animation =
         {
@@ -557,8 +557,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/farm-field-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -566,8 +566,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/hr-farm-field-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -577,8 +577,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/farm-field-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -588,8 +588,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/hr-farm-field-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
@@ -656,8 +656,8 @@ data:extend(
             },
             off_when_no_fluid_recipe = false
         },
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -667,8 +667,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -676,8 +676,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -687,8 +687,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -698,8 +698,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
@@ -754,8 +754,8 @@ data:extend(
             }
         },
         collision_mask = {"object-layer"},
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         animation =
         {
@@ -764,8 +764,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/farm-field-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -773,8 +773,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/hr-farm-field-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -784,8 +784,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/farm-field-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -795,8 +795,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/hr-farm-field-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
@@ -850,8 +850,8 @@ data:extend(
                 percent = 70
             }
         },
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -861,8 +861,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -870,8 +870,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -881,8 +881,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -892,8 +892,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
@@ -947,8 +947,8 @@ data:extend(
                 percent = 70
             }
         },
-        collision_box = {{-1.8, -1.8}, {1.8, 1.8}},
-        selection_box = {{-2, -2}, {2, 2}},
+        collision_box = {{-2.3, -2.3}, {2.3, 2.3}},
+        selection_box = {{-2.5, -2.5}, {2.5, 2.5}},
         damaged_trigger_effect = hit_effects.entity(),
         alert_icon_shift = util.by_pixel(-3, -12),
         animation =
@@ -958,8 +958,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder.png",
                     priority="high",
-                    width = 128,
-                    height = 150,
+                    width = 157,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     shift = util.by_pixel(0, -16),
@@ -967,8 +967,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder.png",
                         priority="high",
-                        width = 256,
-                        height = 300,
+                        width = 313,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         shift = util.by_pixel(0, -16),
@@ -978,8 +978,8 @@ data:extend(
                 {
                     filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/farm-placeholder-shadow.png",
                     priority="high",
-                    width = 150,
-                    height = 150,
+                    width = 173,
+                    height = 173,
                     frame_count = 1,
                     line_length = 1,
                     repeat_count = 1,
@@ -989,8 +989,8 @@ data:extend(
                     {
                         filename = "__factorio-agriculture__/graphics/entity/farm-placeholder/hr-farm-placeholder-shadow.png",
                         priority="high",
-                        width = 300,
-                        height = 300,
+                        width = 345,
+                        height = 345,
                         frame_count = 1,
                         line_length = 1,
                         repeat_count = 1,
