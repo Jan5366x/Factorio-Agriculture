@@ -118,6 +118,7 @@ data:extend(
     {
         type = "assembling-machine",
         name = "small-animal-farm-field",
+        map_color = {0.24, 1, 0.4},
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
@@ -325,6 +326,7 @@ data:extend(
     {
         type = "simple-entity",
         name = "large-animal-farm-field",
+        map_color = {0.24, 1, 0.4},
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
@@ -348,7 +350,7 @@ data:extend(
 
             filename = "__factorio-agriculture__/graphics/entity/farm-field-placeholder/farm-field-placeholder.png",
             priority = "high",
-            width = 173,
+            width = 157,
             height = 173,
             shift = util.by_pixel(16, 16),
         },
@@ -467,6 +469,7 @@ data:extend(
     {
         type = "assembling-machine",
         name = "plant-farm-field",
+        map_color = {0.24, 1, 0.4},
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
@@ -674,6 +677,7 @@ data:extend(
     {
         type = "assembling-machine",
         name = "tree-farm-field",
+        map_color = {0.24, 1, 0.4},
         icon = "__base__/graphics/icons/assembling-machine-1.png",
         icon_size = 64, icon_mipmaps = 4,
         flags = {"placeable-neutral", "placeable-player", "player-creation"},
