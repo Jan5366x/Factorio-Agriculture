@@ -53,6 +53,13 @@ function remove_field(event)
     messagePlayer(event.player_index,"Died! SAD!" .. entity.name .. " : " .. entity.type)
 end
 
+function discover_attached_fields(farmEntity)
+  -- TODO support matching farm type
+  -- TODO adjust area to -1 <-> +1 around the farm to fetch all attached fields
+  local nearbyFields = game.surfaces[1].find_entities_filtered{area = {{-10, -10}, {10, 10}}, type = "plant-farm"}
+  -- TODO recursively find more fields / avoid circular conditions
+end
+
 function messagePlayer(player_index, message)
     if not player_index == nil then
         local player = game.get_player(player_index)
