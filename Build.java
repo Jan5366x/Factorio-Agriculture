@@ -21,7 +21,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 16
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.3.3";
+    private final static String BUILD_SCRIPT_VERSION = "1.3.4";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -113,7 +113,7 @@ public class Build {
         println("Local deploy target: " + targetDir.getAbsolutePath());
 
         if (!targetDir.isDirectory()) {
-            throw new Exception("Target dir is not a directory! (" + targetDir.getAbsolutePath() + ")");
+            throw new Exception("Target dir (" + targetDir.getAbsolutePath() + ") is not a directory! Did you install factorio yet?");
         }
 
         var zipFileName = getModZipName() + ".zip";
