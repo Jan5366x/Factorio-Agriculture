@@ -28,10 +28,22 @@ public class Build {
     private final static String BUILD_DIR = "Build";
     private final static Path ASSET_DIR = Paths.get("Assets");
     private final static Path ASSET_INVENTORY_DIR = ASSET_DIR.resolve("inventory");
-    private final static Path ASSET_GRAPHICS_DIR = ASSET_DIR.resolve("icons");
     private final static List<String> SUPPORTED_LANGUAGES = Arrays.asList("de", "en");
     private final static Pattern GRAPHICS_NAME_PATTERN = Pattern.compile("=[ \t]*\"(.*)\"");
     private final static String MOD_BASE_REFERENCE = "__factorio-agriculture__";
+
+    private final static Map<String, Boolean> LUA_BOOLEAN_TEXTS = new HashMap<>();
+
+    {
+        Map<String, Boolean> luaBooleanTexts = new HashMap<>();
+        luaBooleanTexts.put("true", true);
+        luaBooleanTexts.put("false", false);
+        luaBooleanTexts.put("yes", true);
+        luaBooleanTexts.put("no", false);
+        LUA_BOOLEAN_TEXTS.putAll(luaBooleanTexts);
+    }
+
+    private final static char[] LUA_BOOLEAN_CHARS = new char[]{'t', 'r', 'u', 'e', 'f', 'a', 'l', 's', 'y', 'n', 'o'};
 
     private final static List<String> filesToCleanup = List.of(".keep", "thumbs.db", "desktop.ini");
     private final static String os = System.getProperty("os.name").toLowerCase();
@@ -299,8 +311,10 @@ public class Build {
 
     private static void loadPrototypeNames(Set<String> protoTypeNames, String filename, String prefix)
             throws IOException {
+        List<Map<String, Object>> prototypes1 = parsePrototypeLua(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
         var prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
         for (String prototype : prototypes) {
+
             String trimmed = prototype.trim();
             if (trimmed.startsWith("name = \"")) {
                 String itemName =
@@ -482,6 +496,233 @@ public class Build {
                 zipOut.write(bytes, 0, length);
             }
         }
+    }
+
+    private static enum TokenType {
+        ROOT, LIST, PAIR_KEY, PAIR_VALUE, STRING, NUMBER, BOOLEAN
+    }
+
+    private static class Token {
+        public TokenType type;
+        public Object data;
+        public List<Token> children = new ArrayList<>();
+        public int begin;
+
+        public Token(TokenType type, int offset) {
+            this.type = type;
+            begin = offset;
+        }
+
+        public Object asPoJo() {
+            if (type == TokenType.ROOT || type == TokenType.LIST) {
+                if (isJavaMap()) {
+                    Map<String, Object> result = new LinkedHashMap<>();
+                    for (Token child : children) {
+                        String key = (String) child.data;
+                        Object value = child.children.get(0).asPoJo();
+                        result.put(key, value);
+                    }
+                    return result;
+                } else {
+                    List<Object> result = new ArrayList<>();
+                    for (Token child : children) {
+                        result.add(child.asPoJo());
+                    }
+                    return result;
+                }
+            } else if (type == TokenType.PAIR_VALUE) {
+                return children.get(0).asPoJo();
+            } else if (type == TokenType.STRING || type == TokenType.NUMBER || type == TokenType.BOOLEAN) {
+                return data;
+            } else {
+                throw new IllegalStateException("Type " + type.name() + " has no pojo serialization");
+            }
+        }
+
+        private boolean isJavaMap() {
+            for (Token child : children) {
+                if (child.type == TokenType.PAIR_KEY) {
+                    return true;
+                }
+                break;
+            }
+
+            return false;
+        }
+    }
+
+    private static class LuaPrototypeParser {
+        private Token rootToken;
+        private Token currentToken;
+        private Stack<Token> stack = new Stack<>();
+        private final String file;
+
+        public LuaPrototypeParser(String file, int offset) {
+            this.file = file;
+            Token root = new Token(TokenType.ROOT, offset);
+            root.begin = offset;
+            rootToken = root;
+            currentToken = root;
+        }
+
+        public void parse() {
+            boolean comment = false;
+            for (int currentCharIndex = rootToken.begin; currentCharIndex < file.length(); currentCharIndex++) {
+                char currentChar = file.charAt(currentCharIndex);
+
+                if (comment) {
+                    if (currentChar == '\r' || currentChar == '\n') {
+                        comment = false;
+
+                    }
+                    continue;
+                }
+
+                if (currentToken.type == TokenType.ROOT || currentToken.type == TokenType.LIST || currentToken.type == TokenType.PAIR_KEY || currentToken.type == TokenType.PAIR_VALUE) {
+                    if (Character.isWhitespace(currentChar)) {
+                        continue;
+                    }
+                }
+
+                if (currentToken.type != TokenType.STRING) {
+                    if (currentChar == '-' && file.charAt(currentCharIndex + 1) == '-') { // comment
+                        comment = true;
+                        continue;
+                    }
+                }
+
+                switch (currentToken.type) {
+                    case ROOT -> {
+                        if (currentChar == '{') { // open new list
+                            addNewChild(TokenType.LIST, currentCharIndex);
+                        } else if (currentChar == ')') {
+                            // Part of data:extend preable. Stop
+                            return;
+                        } else {
+                            throw new IllegalStateException("Invalid char \"" + currentChar + "\" in ROOT token");
+                        }
+                    }
+                    case LIST -> {
+                        if (currentChar == '{') { // open new list
+                            addNewChild(TokenType.LIST, currentCharIndex);
+                        } else if (currentChar == '}') {
+                            finalizeToken();
+                        } else if (currentChar == ',') {
+                            // ignore
+                        } else if (Character.isLetter(currentChar)) {
+                            // Initializes a key value pair
+                            addNewChild(TokenType.PAIR_KEY, currentCharIndex);
+                        } else if (currentChar == '"') {
+                            addNewChild(TokenType.STRING, currentCharIndex);
+                        } else if (Character.isDigit(currentChar)) {
+                            addNewChild(TokenType.NUMBER, currentCharIndex);
+                        } else if (isLuaBoolean(currentChar)) {
+                            addNewChild(TokenType.BOOLEAN, currentCharIndex);
+                        } else {
+                            throw new IllegalStateException("Invalid char \"" + currentChar + "\" in LIST token");
+                        }
+                    }
+                    case PAIR_KEY -> {
+                        if (currentChar == '=') {
+                            currentToken.data = file.substring(currentToken.begin, currentCharIndex).trim();
+                            addNewChild(TokenType.PAIR_VALUE, currentCharIndex + 1);
+                        } else if (Character.isLetter(currentChar) || currentChar == '_') {
+                            // valid char for key
+                        } else {
+                            throw new IllegalStateException("Invalid char \"" + currentChar + "\" in PAIR_KEY token");
+                        }
+                    }
+                    case PAIR_VALUE -> {
+                        if (currentChar == '"') {
+                            addNewChild(TokenType.STRING, currentCharIndex);
+                        } else if (Character.isDigit(currentChar)) {
+                            addNewChild(TokenType.NUMBER, currentCharIndex);
+                        } else if (currentChar == '{') {
+                            addNewChild(TokenType.LIST, currentCharIndex);
+                        } else if (isLuaBoolean(currentChar)) {
+                            addNewChild(TokenType.BOOLEAN, currentCharIndex);
+                        } else if (currentChar == ',') {
+                            finalizeToken(); // finalize value and then key
+                            finalizeToken();
+                        } else if (currentChar == '}') {
+                            finalizeToken(); // finalize value and then key
+                            finalizeToken();
+                            currentCharIndex--; // replay termination character
+                        } else {
+                            throw new IllegalStateException("Invalid char \"" + currentChar + "\" in PAIR_VALUE token");
+                        }
+                    }
+                    case STRING -> {
+                        if (currentChar == '"') {
+                            currentToken.data = file.substring(currentToken.begin + 1, currentCharIndex); // Skip initial "
+                            finalizeToken();
+                        } else {
+                            // Anything is valid in a string
+                        }
+                    }
+                    case NUMBER -> {
+                        if (Character.isDigit(currentChar) || currentChar == '.') {
+                            // Valid number
+                        } else {
+                            String substring = file.substring(currentToken.begin, currentCharIndex);
+                            boolean isFloat = substring.contains(".");
+                            currentToken.data = isFloat ? Float.parseFloat(substring) : Integer.parseInt(substring);
+                            finalizeToken();
+                            currentCharIndex--; // replay termination char
+                        }
+                    }
+                    case BOOLEAN -> {
+                        if (isLuaBoolean(currentChar)) {
+                            // Valid boolean
+                        } else {
+                            String substring = file.substring(currentToken.begin, currentCharIndex);
+                            currentToken.data = LUA_BOOLEAN_TEXTS.getOrDefault(substring, false);
+                            finalizeToken();
+                            currentCharIndex--; // replay termination char
+                        }
+                    }
+                }
+            }
+        }
+
+        private void addNewChild(TokenType type, int offset) {
+            Token child = new Token(type, offset);
+            currentToken.children.add(child);
+            stack.push(currentToken);
+            currentToken = child;
+        }
+
+        private void finalizeToken() {
+            currentToken = stack.pop();
+        }
+
+        private boolean isLuaBoolean(char currentChar) {
+            for (char luaBooleanChar : LUA_BOOLEAN_CHARS) {
+                if (luaBooleanChar == currentChar) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public Object getPojo() {
+            return rootToken.asPoJo();
+        }
+    }
+
+    private static List<Map<String, Object>> parsePrototypeLua(Path file) {
+        String fileData = "";
+        try {
+            fileData = Files.readString(file);
+        } catch (IOException e) { // will not
+        }
+        if (!fileData.startsWith("data:extend(")) {
+            return Collections.emptyList();
+        }
+        LuaPrototypeParser luaPrototypeParser = new LuaPrototypeParser(fileData, 12);
+        luaPrototypeParser.parse();
+        //noinspection unchecked
+        return (List<Map<String, Object>>) luaPrototypeParser.getPojo();
     }
 
     public static boolean isWindows() {
