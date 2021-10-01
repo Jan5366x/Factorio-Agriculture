@@ -12,6 +12,9 @@ import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.MatchResult;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -27,9 +30,12 @@ public class Build {
     private final static String BUILD_DIR = "Build";
     private final static Path ASSET_DIR = Paths.get("Assets");
     private final static Path ASSET_INVENTORY_DIR = ASSET_DIR.resolve("inventory");
+    private final static Path ASSET_GRAPHICS_DIR = ASSET_DIR.resolve("icons");
+    private final static List<String> SUPPORTED_LANGUAGES = Arrays.asList("de", "en");
+    private final static Pattern GRAPHICS_NAME_PATTERN = Pattern.compile("=[ \t]*\"(.*)\"");
+    private final static String MOD_BASE_REFERENCE = "__factorio-agriculture__";
 
     private final static List<String> filesToCleanup = List.of(".keep", "thumbs.db", "desktop.ini");
-
     private final static String os = System.getProperty("os.name").toLowerCase();
     private final static String userHome = System.getProperty("user.home");
 
@@ -62,7 +68,7 @@ public class Build {
                     warningCount == 0
                             ? "✓ Build successfully!"
                             : "⚠ Build finished with " + warningCount + " warning(s)!");
-
+            System.exit(warningCount == 0 ? 0 : 1);
         } catch (Exception e) {
             e.printStackTrace(System.out);
             System.exit(1);
@@ -91,7 +97,7 @@ public class Build {
         }
         if (Desktop.isDesktopSupported()) {
             Desktop.getDesktop().browse(new URI("steam://run/427520/"));
-            // Wait for OS to take over and detach
+            // Wait for OS to take over and detach steam runner form current process.
             Thread.sleep(5000);
         } else {
             warn("This system don't support the launch game feature!");
@@ -137,7 +143,7 @@ public class Build {
         loadPrototypeNames(protoTypeNames, "technology", "technology-name");
         loadPrototypeNames(protoTypeNames, "fluid", "fluid-name");
 
-        for (var language : Arrays.asList("de", "en")) {
+        for (var language : SUPPORTED_LANGUAGES) {
             Set<String> languageNames = loadLanguageFile(language);
             HashSet<String> missingInLanguage = new HashSet<>(protoTypeNames);
             HashSet<String> missingInPrototypes = new HashSet<>(languageNames);
@@ -187,8 +193,6 @@ public class Build {
             println("Problems found for:");
             graphicsNames.forEach(Build::warn);
         }
-
-        // TODO: Check referenced files actually exist
     }
 
     private static void verifyAssetInventory() throws IOException {
@@ -271,12 +275,27 @@ public class Build {
             if (trimmed.startsWith("name = \"")) {
                 name = trimmed.substring(8, trimmed.endsWith(",") ? trimmed.length() - 2 : trimmed.length() - 1);
             } else if (trimmed.endsWith(".png\",")) {
-                if (trimmed.endsWith("placeholder.png\",")) {
-                    iconNames.add(name + " (placeholder usage at " + filename + ".lua:" + lineIdx + ")");
-                } else if (trimmed.contains("__base__")) {
-                    iconNames.add(name + " (base game graphics usage at " + filename + ".lua:" + lineIdx + ")");
+                String iconName = GRAPHICS_NAME_PATTERN.matcher(trimmed)
+                        .results()
+                        .map(matchResult -> matchResult.group(1))
+                        .findFirst()
+                        .orElse("__error__");
+                String referencingFile = filename + ".lua:" + lineIdx;
+                if (iconName.endsWith("placeholder.png\",")) {
+                    iconNames.add(name + " (placeholder usage \"" + iconName + "\" at " + referencingFile + ")");
+                } else if (iconName.contains("__base__")) {
+                    iconNames.add(name + " (base game graphics usage \"" + iconName + "\" at " + referencingFile + ")");
+                } else if (iconName.contains(MOD_BASE_REFERENCE)) {
+                    verifyAssetGraphic(iconNames, name, iconName, referencingFile);
                 }
             }
+        }
+    }
+
+    private static void verifyAssetGraphic(List<String> iconNames, String prototype, String graphicName, String prototypeUsage) {
+        Path path = Paths.get(PROJECT_DIR, graphicName.replace(MOD_BASE_REFERENCE + "/", ""));
+        if (!Files.exists(path)) {
+            iconNames.add(prototype + " (asset not found \"" + graphicName + "\" at " + prototypeUsage + ")");
         }
     }
 
