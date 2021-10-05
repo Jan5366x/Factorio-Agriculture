@@ -12,6 +12,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
@@ -312,14 +313,42 @@ public class Build {
     private static void loadPrototypeNames(Set<String> protoTypeNames, String filename, String prefix)
             throws IOException {
         List<Map<String, Object>> prototypes1 = parsePrototypeLua(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
-        var prototypes = Files.readAllLines(Path.of(MOD_SUB_DIR, "prototypes", filename + ".lua"));
-        for (String prototype : prototypes) {
+        for (Map<String, Object> prototypeEntry : prototypes1) {
+            Object name = prototypeEntry.get("name");
+            protoTypeNames.add(prefix + "." + name);
 
-            String trimmed = prototype.trim();
-            if (trimmed.startsWith("name = \"")) {
-                String itemName =
-                        trimmed.substring(8, trimmed.endsWith(",") ? trimmed.length() - 2 : trimmed.length() - 1);
-                protoTypeNames.add(prefix + "." + itemName);
+            Object results = prototypeEntry.get("results");
+            addNestedListEntryNames(results, s -> protoTypeNames.add(prefix + "."+s));
+            Object ingredients = prototypeEntry.get("ingredients");
+            addNestedListEntryNames(ingredients, s -> protoTypeNames.add(prefix + "."+s));
+        }
+    }
+
+    private static void addNestedListEntryNames(Object object, Consumer<String> nameConsumer){
+        if(object == null || !(object instanceof List)){
+            return;
+        }
+
+        List<Object> unwrapFirst = (List<Object>) object;
+        for (Object o : unwrapFirst) {
+            if(o instanceof List){
+                List<Object> unwrapSecond = (List<Object>) o;
+                boolean addNext = false;
+                for (Object o1 : unwrapSecond) {
+                    if(addNext){
+                        nameConsumer.accept((String) o1);
+                        addNext = false;
+                    }
+                    if(Objects.equals(o1, "name")){
+                        addNext = true;
+                    }
+                }
+            } else if(o instanceof Map){
+                Map<String, Object> unwrapSecond = (Map<String, Object>) o;
+                Object _name = unwrapSecond.get("name");
+                if (_name != null) {
+                    nameConsumer.accept((String) _name);
+                }
             }
         }
     }
@@ -499,7 +528,7 @@ public class Build {
     }
 
     private static enum TokenType {
-        ROOT, LIST, PAIR_KEY, PAIR_VALUE, STRING, NUMBER, BOOLEAN
+        ROOT, LIST, PAIR_KEY, PAIR_VALUE, STRING, NUMBER, BOOLEAN, METHOD_CALL, METHOD_CALL_ARGS
     }
 
     private static class Token {
@@ -514,7 +543,10 @@ public class Build {
         }
 
         public Object asPoJo() {
-            if (type == TokenType.ROOT || type == TokenType.LIST) {
+            if (type == TokenType.ROOT) {
+                return children.get(0).asPoJo();
+            }
+            if (type == TokenType.LIST || type == TokenType.METHOD_CALL) {
                 if (isJavaMap()) {
                     Map<String, Object> result = new LinkedHashMap<>();
                     for (Token child : children) {
@@ -530,9 +562,12 @@ public class Build {
                     }
                     return result;
                 }
+            } else if (type == TokenType.PAIR_KEY) {
+                // Only happens when a list is of mixed data types
+                return Map.of((String) data, children.get(0).asPoJo());
             } else if (type == TokenType.PAIR_VALUE) {
                 return children.get(0).asPoJo();
-            } else if (type == TokenType.STRING || type == TokenType.NUMBER || type == TokenType.BOOLEAN) {
+            } else if (type == TokenType.STRING || type == TokenType.NUMBER || type == TokenType.BOOLEAN || type == TokenType.METHOD_CALL_ARGS) {
                 return data;
             } else {
                 throw new IllegalStateException("Type " + type.name() + " has no pojo serialization");
@@ -614,7 +649,7 @@ public class Build {
                             addNewChild(TokenType.PAIR_KEY, currentCharIndex);
                         } else if (currentChar == '"') {
                             addNewChild(TokenType.STRING, currentCharIndex);
-                        } else if (Character.isDigit(currentChar)) {
+                        } else if (isLuaNumberChar(currentChar)) {
                             addNewChild(TokenType.NUMBER, currentCharIndex);
                         } else if (isLuaBoolean(currentChar)) {
                             addNewChild(TokenType.BOOLEAN, currentCharIndex);
@@ -635,12 +670,14 @@ public class Build {
                     case PAIR_VALUE -> {
                         if (currentChar == '"') {
                             addNewChild(TokenType.STRING, currentCharIndex);
-                        } else if (Character.isDigit(currentChar)) {
+                        } else if (isLuaNumberChar(currentChar)) {
                             addNewChild(TokenType.NUMBER, currentCharIndex);
                         } else if (currentChar == '{') {
                             addNewChild(TokenType.LIST, currentCharIndex);
                         } else if (isLuaBoolean(currentChar)) {
                             addNewChild(TokenType.BOOLEAN, currentCharIndex);
+                        } else if (Character.isLetter(currentChar)) {
+                            addNewChild(TokenType.METHOD_CALL, currentCharIndex);
                         } else if (currentChar == ',') {
                             finalizeToken(); // finalize value and then key
                             finalizeToken();
@@ -661,7 +698,7 @@ public class Build {
                         }
                     }
                     case NUMBER -> {
-                        if (Character.isDigit(currentChar) || currentChar == '.') {
+                        if (isLuaNumberChar(currentChar)) {
                             // Valid number
                         } else {
                             String substring = file.substring(currentToken.begin, currentCharIndex);
@@ -681,8 +718,31 @@ public class Build {
                             currentCharIndex--; // replay termination char
                         }
                     }
+                    case METHOD_CALL -> {
+                        if (currentChar == '(') {
+                            addNewChild(TokenType.METHOD_CALL_ARGS, currentCharIndex);
+                        } else if (currentChar == ')') {
+                            finalizeToken();
+                        } else if (currentChar == ',') {
+                            finalizeToken();
+                            currentCharIndex--;
+                        }
+                    }
+                    case METHOD_CALL_ARGS -> {
+                        if (currentChar == ')') {
+                            currentToken.data = file.substring(currentToken.begin, currentCharIndex - 1);
+                            finalizeToken();
+                            currentCharIndex--;
+                        } else {
+                            // Everything is valid
+                        }
+                    }
                 }
             }
+        }
+
+        private boolean isLuaNumberChar(char currentChar) {
+            return Character.isDigit(currentChar) || currentChar == '.' || currentChar == '-';
         }
 
         private void addNewChild(TokenType type, int offset) {
@@ -710,19 +770,17 @@ public class Build {
         }
     }
 
-    private static List<Map<String, Object>> parsePrototypeLua(Path file) {
+    private static List<Map<String, Object>> parsePrototypeLua(Path file) throws IOException {
         String fileData = "";
-        try {
-            fileData = Files.readString(file);
-        } catch (IOException e) { // will not
-        }
-        if (!fileData.startsWith("data:extend(")) {
+        fileData = Files.readString(file);
+        int offset = fileData.indexOf("data:extend(");
+        if (offset < 0) {
             return Collections.emptyList();
         }
-        LuaPrototypeParser luaPrototypeParser = new LuaPrototypeParser(fileData, 12);
+        LuaPrototypeParser luaPrototypeParser = new LuaPrototypeParser(fileData, offset + 12);
         luaPrototypeParser.parse();
         //noinspection unchecked
-        return (List<Map<String, Object>>) luaPrototypeParser.getPojo();
+        return ((List<Map<String, Object>>) luaPrototypeParser.getPojo()); //
     }
 
     public static boolean isWindows() {
