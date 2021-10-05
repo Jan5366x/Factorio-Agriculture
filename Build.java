@@ -23,7 +23,7 @@ import java.util.zip.ZipOutputStream;
  * java single file execution - java 16
  */
 public class Build {
-    private final static String BUILD_SCRIPT_VERSION = "1.3.4";
+    private final static String BUILD_SCRIPT_VERSION = "1.4.0";
     private final static String PROJECT_DIR = "Factorio-Agriculture";
     private final static String MOD_SUB_DIR = "Factorio-Agriculture";
     private final static String BUILD_DIR = "Build";
@@ -318,32 +318,32 @@ public class Build {
             protoTypeNames.add(prefix + "." + name);
 
             Object results = prototypeEntry.get("results");
-            addNestedListEntryNames(results, s -> protoTypeNames.add(prefix + "."+s));
+            addNestedListEntryNames(results, s -> protoTypeNames.add(prefix + "." + s));
             Object ingredients = prototypeEntry.get("ingredients");
-            addNestedListEntryNames(ingredients, s -> protoTypeNames.add(prefix + "."+s));
+            addNestedListEntryNames(ingredients, s -> protoTypeNames.add(prefix + "." + s));
         }
     }
 
-    private static void addNestedListEntryNames(Object object, Consumer<String> nameConsumer){
-        if(object == null || !(object instanceof List)){
+    private static void addNestedListEntryNames(Object object, Consumer<String> nameConsumer) {
+        if (object == null || !(object instanceof List)) {
             return;
         }
 
         List<Object> unwrapFirst = (List<Object>) object;
         for (Object o : unwrapFirst) {
-            if(o instanceof List){
+            if (o instanceof List) {
                 List<Object> unwrapSecond = (List<Object>) o;
                 boolean addNext = false;
                 for (Object o1 : unwrapSecond) {
-                    if(addNext){
+                    if (addNext) {
                         nameConsumer.accept((String) o1);
                         addNext = false;
                     }
-                    if(Objects.equals(o1, "name")){
+                    if (Objects.equals(o1, "name")) {
                         addNext = true;
                     }
                 }
-            } else if(o instanceof Map){
+            } else if (o instanceof Map) {
                 Map<String, Object> unwrapSecond = (Map<String, Object>) o;
                 Object _name = unwrapSecond.get("name");
                 if (_name != null) {
