@@ -247,7 +247,7 @@ data:extend(
     {
         type = "item",
         name = "cherry",
-        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/cherry.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[cherry]",

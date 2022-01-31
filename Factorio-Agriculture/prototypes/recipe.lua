@@ -588,7 +588,7 @@ data:extend(
     {
         type = "recipe",
         name = "cherry",
-        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/cherry.png",
         icon_size = 64, icon_mipmaps = 4,
         enabled = true,
         category = "tree-growing",
