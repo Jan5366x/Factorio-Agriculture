@@ -399,7 +399,7 @@ data:extend(
     {
         type = "recipe",
         name = "potato",
-        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/potato.png",
         icon_size = 64, icon_mipmaps = 4,
         enabled = true,
         category = "plant-growing",
