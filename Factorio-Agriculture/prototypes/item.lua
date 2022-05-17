@@ -373,7 +373,7 @@ data:extend(
     {
         type = "item",
         name = "baked-potato",
-        icon = "__factorio-agriculture__/graphics/item/placeholder.png",
+        icon = "__factorio-agriculture__/graphics/item/baked-potato.png",
         icon_size = 64, icon_mipmaps = 4,
         subgroup = "raw-resource",
         order = "a[baked-potato]",
